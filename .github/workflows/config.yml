@@ -1,50 +1,11 @@
-#name: Test
-#
-#on: [workflow_dispatch]
-#
-#jobs:
-#  test:
-#    name: Test
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - run: echo "Hello world"
+name: Test
 
-
-name: UI Tests
-
-
-on: workflow_dispatch
+on: [workflow_dispatch]
 
 jobs:
-  ui-tests:
+  test:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Checkout (copy) gh-pages repository to GitHub runner
-        uses: actions/checkout@v2
-        with:
-          ref: gh-pages
-          path: ./.github/gh-pages
-
-      - name: Run UI-tests via docker-compose
-        env:
-          LOGIN: ${{ secrets.LOGIN }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
-          docker-compose up --exit-code-from regression || true
-          
-          
-          
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
-        with:
-          token: ${{ secrets.CI_TOKEN }}
-          branch: gh-pages
-          folder: allure-report
-          clean: true
-
-
+      - run: echo "Hello world"
