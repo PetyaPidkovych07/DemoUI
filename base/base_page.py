@@ -16,5 +16,8 @@ class BasePage:
     def open(self):
         self.driver.get(self.PAGE_URL)
 
+    def is_opened(self):
+        self.wait.until(EC.url_to_be(self.PAGE_URL))
+
 
 
