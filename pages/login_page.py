@@ -2,7 +2,7 @@ from base.base_page import BasePage
 from config.links import Links
 from config.data import Login
 from selenium.webdriver.support import expected_conditions as EC
-import time
+
 
 
 
@@ -25,5 +25,5 @@ class LoginPage(BasePage):
 
     def click_on_submit_button(self):
         self.wait.until(EC.element_to_be_clickable(self.LOGIN_BTN)).click()
-        time.sleep(3)
+
 
