@@ -1,13 +1,13 @@
 from base.base_test import BaseTest
 
 
-# class TestProfileFeatures(BaseTest):
-#
-#     def test_with_valid_crendentional(self):
-#         self.login_page.open()
-#         self.login_page.enter_login()
-#         self.login_page.enter_password()
-#         self.login_page.click_on_submit_button()
+class TestProfileFeatures(BaseTest):
+
+    def test_with_valid_crendentional(self):
+        self.login_page.open()
+        self.login_page.enter_login()
+        self.login_page.enter_password()
+        self.login_page.click_on_submit_button()
 #
 #
 # class TestNationalities(BaseTest):
@@ -152,7 +152,7 @@ from base.base_test import BaseTest
 #
 #
 #
-class TestPimReports(BaseTest):
+# class TestPimReports(BaseTest):
 
     # def test_add_report(self):
     #     self.login_page.open()
@@ -194,19 +194,19 @@ class TestPimReports(BaseTest):
 #         self.pim_reports_page.click_on_search_btn()
 #         self.pim_reports_page.is_searched_invalid_report()
 #
-    def test_delete_report(self):
-        self.login_page.open()
-        self.login_page.enter_login()
-        self.login_page.enter_password()
-        self.login_page.click_on_submit_button()
-        self.pim_reports_page.click_on_pim_item()
-        self.pim_reports_page.click_on_report_link()
-        self.pim_reports_page.type_ped()
-        self.pim_reports_page.click_on_hint_in_the_field()
-        self.pim_reports_page.click_on_search_btn()
-        self.pim_reports_page.click_on_delete_icon()
-        self.pim_reports_page.click_on_yes_confirm()
-        self.pim_reports_page.is_successfully_deleted_report()
+    # def test_delete_report(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.pim_reports_page.click_on_pim_item()
+    #     self.pim_reports_page.click_on_report_link()
+    #     self.pim_reports_page.type_ped()
+    #     self.pim_reports_page.click_on_hint_in_the_field()
+    #     self.pim_reports_page.click_on_search_btn()
+    #     self.pim_reports_page.click_on_delete_icon()
+    #     self.pim_reports_page.click_on_yes_confirm()
+    #     self.pim_reports_page.is_successfully_deleted_report()
 
 
 
