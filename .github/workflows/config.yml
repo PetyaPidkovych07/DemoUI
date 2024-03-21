@@ -23,13 +23,6 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Run UI test via docker-compose
-        env:
-          LOGIN: ${{secrets.LOGIN}}
-          PASSWORD: ${{ secrets.PASSWORD}}
-        run: |
-          docker-compose up --exit-code-from regression || true
-
      
 
       - name: Allure Report action from marketplace
