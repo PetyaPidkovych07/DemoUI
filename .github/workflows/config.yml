@@ -21,7 +21,7 @@ jobs:
         continue-on-error: true
         with:
           ref: gh-pages
-          path: F:\Python 3.9\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\tests\report
+          path: gh-pages
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
