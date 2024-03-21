@@ -3,6 +3,8 @@ import pytest
 
 from pages.login_page import LoginPage
 from pages.nationalities_page import AdminNationalities
+from pages.directory_page import Directory
+from pages.pim_reports_page import PimReports
 
 
 
@@ -14,6 +16,8 @@ class BaseTest:
 
     login_page: LoginPage
     nationalities_page = AdminNationalities
+    directory_page = Directory
+    pim_reports_page = PimReports
 
 
     @pytest.fixture(autouse=True)
@@ -23,6 +27,8 @@ class BaseTest:
 
         request.cls.login_page = LoginPage(driver)
         request.cls.nationalities_page = AdminNationalities(driver)
+        request.cls.directory_page = Directory(driver)
+        request.cls.pim_reports_page = PimReports(driver)
 
 
 

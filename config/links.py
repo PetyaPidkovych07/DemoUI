@@ -11,3 +11,7 @@ class Links:
 
     CHOOSE_ADMIN_ITEM_FROM_MAIN_MENU = f"{HOST}/admin/viewSystemUsers"
     ADMIN_NATIONALITY = f"{HOST}/admin/nationality"
+
+    DIRECTORY = f"{HOST}/directory/viewDirectory"
+
+    PIM_REPORTS = f"{HOST}/pim/viewDefinedPredefinedReports"
