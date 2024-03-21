@@ -21,17 +21,17 @@ jobs:
         continue-on-error: true
         with:
           ref: gh-pages
-          path: gh-pages
+          path: F:\Python 3.9\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\tests\report
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
         #id: allure-report
         with:
-          allure_results: F:\Python 3.9\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\tests\report
+          allure_results: allure-results
           #gh_pages: gh-pages
           #allure_report: allure-report
-          allure_history: F:\Python 3.9\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\tests\report
+          allure_history: allure-history
           #keep_reports: 20
 
       - name: Deploy report to Github Pages
@@ -40,4 +40,4 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: F:\Python 3.9\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\pythonProject\tests\report
+          PUBLISH_DIR: allure-history
