@@ -23,6 +23,15 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
+      - name: Run UI test via docker-compose
+        env:
+          LOGIN: ${{secrets.LOGIN}}
+          PASSWORD: ${{ secrets.PASSWORD}}
+        run: |
+          docker-compose up --exit-code-from regression || true
+
+     
+
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -38,9 +47,6 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v2
         env:
-          token: ${{ secrets.CI_TOKEN }}
-          branch: gh-pages
-          folder: allure-report
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-          clean: true
