@@ -1,10 +1,10 @@
-from selenium.common import NoSuchElementException, TimeoutException
+
 from selenium.webdriver import ActionChains
 
 from base.base_page import BasePage
 from config.links import Links
 from selenium.webdriver.support import expected_conditions as EC
-import time
+
 
 
 
@@ -100,6 +100,49 @@ class PimReports(BasePage):
     def is_successfully_deleted_report(self):
         x = self.wait.until(EC.element_to_be_clickable(self.PUSH_NOTIFICATION)).text
         assert x == "Successfully Deleted"
+
+    def click_on_sort_icon(self):
+        self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_NAME)).click()
+
+
+    def is_sorted_ascending_name(self):
+        action = ActionChains(self.driver)
+        self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_NAME)).click()
+        element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_NAME_AS))
+        action.move_to_element(element).click().perform()
+        name_column = self.wait.until(EC.visibility_of_all_elements_located(self.NAME_COLUMN))
+        size_list = []
+        for size in name_column:
+            size_list.append(size.text)
+        print(size_list)
+
+        y = ['All Employee Sub Unit Hierarchy Report', 'Employee Contact info report', 'Employee Job Details', 'PIM Sample Report']
+        print(y)
+        assert all([a == b for a, b in zip(size_list, y)])
+
+
+    def is_sorted_descending_name(self):
+        action = ActionChains(self.driver)
+        self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_NAME)).click()
+        element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_NAME_DES))
+        action.move_to_element(element).click().perform()
+        name_column = self.wait.until(EC.visibility_of_all_elements_located(self.NAME_COLUMN))
+        size_list = []
+        for size in name_column:
+            size_list.append(size.text)
+        print(size_list)
+
+        y = ['PIM Sample Report', 'Employee Job Details', 'Employee Contact info report','All Employee Sub Unit Hierarchy Report']
+        print(y)
+        assert all([a == b for a, b in zip(size_list, y)])
+
+
+    def click_on_icon_btn(self):
+        self.wait.until(EC.element_to_be_clickable(self.ICON_BTN)).click()
+
+
+    def is_hidden_block(self):
+        assert self.wait.until(EC.invisibility_of_element_located(self.BLOCK_EMPLOYEE_REPORTS))
 
 
 

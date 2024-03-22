@@ -1,13 +1,13 @@
 from base.base_test import BaseTest
 
 
-class TestProfileFeatures(BaseTest):
-
-    def test_with_valid_crendentional(self):
-        self.login_page.open()
-        self.login_page.enter_login()
-        self.login_page.enter_password()
-        self.login_page.click_on_submit_button()
+# class TestProfileFeatures(BaseTest):
+#
+#     def test_with_valid_crendentional(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
 #
 #
 # class TestNationalities(BaseTest):
@@ -168,31 +168,31 @@ class TestProfileFeatures(BaseTest):
     #     self.pim_reports_page.click_on_plus_icon()
     #     self.pim_reports_page.click_save_btn()
     #     self.pim_reports_page.is_appeared_new_report()
-#
-#
-#
-#     def test_find_a_new_report(self):
-#         self.login_page.open()
-#         self.login_page.enter_login()
-#         self.login_page.enter_password()
-#         self.login_page.click_on_submit_button()
-#         self.pim_reports_page.click_on_pim_item()
-#         self.pim_reports_page.click_on_report_link()
-#         self.pim_reports_page.type_ped()
-#         self.pim_reports_page.click_on_hint_in_the_field()
-#         self.pim_reports_page.click_on_search_btn()
-#         self.pim_reports_page.is_appeared_new_report()
-#
-#     def test_find_invalid_report(self):
-#         self.login_page.open()
-#         self.login_page.enter_login()
-#         self.login_page.enter_password()
-#         self.login_page.click_on_submit_button()
-#         self.pim_reports_page.click_on_pim_item()
-#         self.pim_reports_page.click_on_report_link()
-#         self.pim_reports_page.type_invalid_date()
-#         self.pim_reports_page.click_on_search_btn()
-#         self.pim_reports_page.is_searched_invalid_report()
+    #
+    #
+    #
+    # def test_find_a_new_report(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.pim_reports_page.click_on_pim_item()
+    #     self.pim_reports_page.click_on_report_link()
+    #     self.pim_reports_page.type_ped()
+    #     self.pim_reports_page.click_on_hint_in_the_field()
+    #     self.pim_reports_page.click_on_search_btn()
+    #     self.pim_reports_page.is_appeared_new_report()
+    #
+    # def test_find_invalid_report(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.pim_reports_page.click_on_pim_item()
+    #     self.pim_reports_page.click_on_report_link()
+    #     self.pim_reports_page.type_invalid_date()
+    #     self.pim_reports_page.click_on_search_btn()
+    #     self.pim_reports_page.is_searched_invalid_report()
 #
     # def test_delete_report(self):
     #     self.login_page.open()
@@ -207,6 +207,79 @@ class TestProfileFeatures(BaseTest):
     #     self.pim_reports_page.click_on_delete_icon()
     #     self.pim_reports_page.click_on_yes_confirm()
     #     self.pim_reports_page.is_successfully_deleted_report()
+
+    # def test_sort_ascending_name(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.pim_reports_page.click_on_pim_item()
+    #     self.pim_reports_page.click_on_report_link()
+    #     self.pim_reports_page.click_on_sort_icon()
+    #     self.pim_reports_page.is_sorted_ascending_name()
+
+    # def test_sort_descending_name(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.pim_reports_page.click_on_pim_item()
+    #     self.pim_reports_page.click_on_report_link()
+    #     self.pim_reports_page.click_on_sort_icon()
+    #     self.pim_reports_page.is_sorted_descending_name()
+
+    # def test_hide_block(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.pim_reports_page.click_on_pim_item()
+    #     self.pim_reports_page.click_on_report_link()
+    #     self.pim_reports_page.click_on_icon_btn()
+    #     self.pim_reports_page.is_hidden_block()
+
+class TestVacancies(BaseTest):
+
+    # def test_add_vacancy_QA(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.vacancies_page.click_on_recruitment_item()
+    #     self.vacancies_page.click_on_vacancies_item()
+    #     self.vacancies_page.click_on_add_btn()
+    #     self.vacancies_page.type_petro_in_the_field()
+    #     self.vacancies_page.click_on_dropdown()
+    #     self.vacancies_page.choose_QA_from_dropdown()
+    #     self.vacancies_page.type_odis()
+    #     self.vacancies_page.click_on_hint()
+    #     self.vacancies_page.click_on_save_btn()
+    #     self.vacancies_page.click_on_vacancies_item()
+    #     self.vacancies_page.is_added_new_vacancy()
+
+    # def test_vacancy_existed(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.vacancies_page.click_on_recruitment_item()
+    #     self.vacancies_page.click_on_vacancies_item()
+    #     self.vacancies_page.click_on_add_btn()
+    #     self.vacancies_page.type_petro_in_the_field()
+    #     self.vacancies_page.is_already_existed_position()
+
+    def test_show_error_when_empty_field(self):
+        self.login_page.open()
+        self.login_page.enter_login()
+        self.login_page.enter_password()
+        self.login_page.click_on_submit_button()
+        self.vacancies_page.click_on_recruitment_item()
+        self.vacancies_page.click_on_vacancies_item()
+        self.vacancies_page.click_on_add_btn()
+        self.vacancies_page.click_on_save_btn()
+        self.vacancies_page.is_shown_error_when_empty_field()
+
+
 
 
 
