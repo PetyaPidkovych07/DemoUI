@@ -17,4 +17,6 @@ class Links:
     PIM_REPORTS = f"{HOST}/pim/viewDefinedPredefinedReports"
 
     RECRUITMENT_VACANCIES = f"{HOST}/recruitment/viewJobVacancy"
+
+    RECRUITMENT_CANDIDATES = f"{HOST}/recruitment/viewCandidates"
     

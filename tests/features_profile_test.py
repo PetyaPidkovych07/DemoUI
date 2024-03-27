@@ -1,3 +1,5 @@
+import time
+
 from base.base_test import BaseTest
 
 
@@ -153,131 +155,268 @@ from base.base_test import BaseTest
 #
 #
 # class TestPimReports(BaseTest):
-
-    # def test_add_report(self):
-    #     self.login_page.open()
-    #     self.login_page.enter_login()
-    #     self.login_page.enter_password()
-    #     self.login_page.click_on_submit_button()
-    #     self.pim_reports_page.click_on_pim_item()
-    #     self.pim_reports_page.click_on_report_link()
-    #     self.pim_reports_page.click_on_add_btn()
-    #     self.pim_reports_page.type_pedro()
-    #     self.pim_reports_page.click_on_dropdown()
-    #     self.pim_reports_page.choose_contact_from_dropdown()
-    #     self.pim_reports_page.click_on_plus_icon()
-    #     self.pim_reports_page.click_save_btn()
-    #     self.pim_reports_page.is_appeared_new_report()
-    #
-    #
-    #
-    # def test_find_a_new_report(self):
-    #     self.login_page.open()
-    #     self.login_page.enter_login()
-    #     self.login_page.enter_password()
-    #     self.login_page.click_on_submit_button()
-    #     self.pim_reports_page.click_on_pim_item()
-    #     self.pim_reports_page.click_on_report_link()
-    #     self.pim_reports_page.type_ped()
-    #     self.pim_reports_page.click_on_hint_in_the_field()
-    #     self.pim_reports_page.click_on_search_btn()
-    #     self.pim_reports_page.is_appeared_new_report()
-    #
-    # def test_find_invalid_report(self):
-    #     self.login_page.open()
-    #     self.login_page.enter_login()
-    #     self.login_page.enter_password()
-    #     self.login_page.click_on_submit_button()
-    #     self.pim_reports_page.click_on_pim_item()
-    #     self.pim_reports_page.click_on_report_link()
-    #     self.pim_reports_page.type_invalid_date()
-    #     self.pim_reports_page.click_on_search_btn()
-    #     self.pim_reports_page.is_searched_invalid_report()
 #
-    # def test_delete_report(self):
+#     def test_add_report(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.pim_reports_page.click_on_pim_item()
+#         self.pim_reports_page.click_on_report_link()
+#         self.pim_reports_page.click_on_add_btn()
+#         self.pim_reports_page.type_pedro()
+#         self.pim_reports_page.click_on_dropdown()
+#         self.pim_reports_page.choose_contact_from_dropdown()
+#         self.pim_reports_page.click_on_plus_icon()
+#         self.pim_reports_page.click_save_btn()
+#         self.pim_reports_page.is_appeared_new_report()
+#
+#
+#
+#     def test_find_a_new_report(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.pim_reports_page.click_on_pim_item()
+#         self.pim_reports_page.click_on_report_link()
+#         self.pim_reports_page.type_ped()
+#         self.pim_reports_page.click_on_hint_in_the_field()
+#         self.pim_reports_page.click_on_search_btn()
+#         self.pim_reports_page.is_appeared_new_report()
+#
+#     def test_find_invalid_report(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.pim_reports_page.click_on_pim_item()
+#         self.pim_reports_page.click_on_report_link()
+#         self.pim_reports_page.type_invalid_date()
+#         self.pim_reports_page.click_on_search_btn()
+#         self.pim_reports_page.is_searched_invalid_report()
+#
+#     def test_delete_report(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.pim_reports_page.click_on_pim_item()
+#         self.pim_reports_page.click_on_report_link()
+#         self.pim_reports_page.type_ped()
+#         self.pim_reports_page.click_on_hint_in_the_field()
+#         self.pim_reports_page.click_on_search_btn()
+#         self.pim_reports_page.click_on_delete_icon()
+#         self.pim_reports_page.click_on_yes_confirm()
+#         self.pim_reports_page.is_successfully_deleted_report()
+#
+#     def test_sort_ascending_name(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.pim_reports_page.click_on_pim_item()
+#         self.pim_reports_page.click_on_report_link()
+#         self.pim_reports_page.click_on_sort_icon()
+#         self.pim_reports_page.is_sorted_ascending_name()
+#
+#     def test_sort_descending_name(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.pim_reports_page.click_on_pim_item()
+#         self.pim_reports_page.click_on_report_link()
+#         self.pim_reports_page.click_on_sort_icon()
+#         self.pim_reports_page.is_sorted_descending_name()
+#
+#     def test_hide_block(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.pim_reports_page.click_on_pim_item()
+#         self.pim_reports_page.click_on_report_link()
+#         self.pim_reports_page.click_on_icon_btn()
+#         self.pim_reports_page.is_hidden_block()
+#
+# class TestVacancies(BaseTest):
+#
+#     def test_add_vacancy_QA(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.vacancies_page.click_on_recruitment_item()
+#         self.vacancies_page.click_on_vacancies_item()
+#         self.vacancies_page.click_on_add_btn()
+#         self.vacancies_page.type_petro_in_the_field()
+#         self.vacancies_page.click_on_dropdown()
+#         self.vacancies_page.choose_QA_from_dropdown()
+#         self.vacancies_page.type_odis()
+#         self.vacancies_page.click_on_hint()
+#         self.vacancies_page.click_on_save_btn()
+#         self.vacancies_page.click_on_vacancies_item()
+#         self.vacancies_page.is_added_new_vacancy()
+#
+#     def test_vacancy_existed(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.vacancies_page.click_on_recruitment_item()
+#         self.vacancies_page.click_on_vacancies_item()
+#         self.vacancies_page.click_on_add_btn()
+#         self.vacancies_page.type_petro_in_the_field()
+#         self.vacancies_page.is_already_existed_position()
+#
+#     def test_show_error_when_empty_field(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.vacancies_page.click_on_recruitment_item()
+#         self.vacancies_page.click_on_vacancies_item()
+#         self.vacancies_page.click_on_add_btn()
+#         self.vacancies_page.click_on_save_btn()
+#         self.vacancies_page.is_shown_error_when_empty_field()
+#
+#     def test_display_engineer_in_table_after_chosen_dropdown(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.vacancies_page.click_on_recruitment_item()
+#         self.vacancies_page.click_on_vacancies_item()
+#         self.vacancies_page.click_on_dropdown()
+#         self.vacancies_page.choose_engineer_from_dropdown()
+#         self.vacancies_page.click_on_search_btn()
+#         self.vacancies_page.is_displayed_engineer_in_table()
+#
+#
+#     def test_display_sales_in_table_after_chosen_dropdown(self):
+#         self.login_page.open()
+#         self.login_page.enter_login()
+#         self.login_page.enter_password()
+#         self.login_page.click_on_submit_button()
+#         self.vacancies_page.click_on_recruitment_item()
+#         self.vacancies_page.click_on_vacancies_item()
+#         self.vacancies_page.click_on_dropdown()
+#         self.vacancies_page.choose_sales_from_dropdown()
+#         self.vacancies_page.click_on_search_btn()
+#         self.vacancies_page.is_displayed_sales_in_table()
+
+
+class TestRecruitmentCandidate(BaseTest):
+
+    # def test_add_new_candidate(self):
     #     self.login_page.open()
     #     self.login_page.enter_login()
     #     self.login_page.enter_password()
     #     self.login_page.click_on_submit_button()
-    #     self.pim_reports_page.click_on_pim_item()
-    #     self.pim_reports_page.click_on_report_link()
-    #     self.pim_reports_page.type_ped()
-    #     self.pim_reports_page.click_on_hint_in_the_field()
-    #     self.pim_reports_page.click_on_search_btn()
-    #     self.pim_reports_page.click_on_delete_icon()
-    #     self.pim_reports_page.click_on_yes_confirm()
-    #     self.pim_reports_page.is_successfully_deleted_report()
-
-    # def test_sort_ascending_name(self):
+    #     self.recruitment_candidate_page.click_on_recruitment_item()
+    #     self.recruitment_candidate_page.is_opened()
+    #     self.recruitment_candidate_page.click_on_add_btn()
+    #     self.recruitment_candidate_page.type_name_in_the_field()
+    #     self.recruitment_candidate_page.type__last_name_in_the_field()
+    #     self.recruitment_candidate_page.click_on_dropdown()
+    #     self.recruitment_candidate_page.choose_QA_from_dropdown()
+    #     self.recruitment_candidate_page.type_email()
+    #     self.recruitment_candidate_page.click_on_save_btn()
+    #     self.recruitment_candidate_page.is_added_a_new_candidate()
+    #
+    #
+    # def test_shown_error_when_empty_fields(self):
     #     self.login_page.open()
     #     self.login_page.enter_login()
     #     self.login_page.enter_password()
     #     self.login_page.click_on_submit_button()
-    #     self.pim_reports_page.click_on_pim_item()
-    #     self.pim_reports_page.click_on_report_link()
-    #     self.pim_reports_page.click_on_sort_icon()
-    #     self.pim_reports_page.is_sorted_ascending_name()
-
-    # def test_sort_descending_name(self):
+    #     self.recruitment_candidate_page.click_on_recruitment_item()
+    #     self.recruitment_candidate_page.is_opened()
+    #     self.recruitment_candidate_page.click_on_add_btn()
+    #     self.recruitment_candidate_page.click_on_save_btn()
+    #     self.recruitment_candidate_page.is_shown_required_error()
+    #
+    # def test_found_candidate(self):
     #     self.login_page.open()
     #     self.login_page.enter_login()
     #     self.login_page.enter_password()
     #     self.login_page.click_on_submit_button()
-    #     self.pim_reports_page.click_on_pim_item()
-    #     self.pim_reports_page.click_on_report_link()
-    #     self.pim_reports_page.click_on_sort_icon()
-    #     self.pim_reports_page.is_sorted_descending_name()
+    #     self.recruitment_candidate_page.click_on_recruitment_item()
+    #     self.recruitment_candidate_page.is_opened()
+    #     self.recruitment_candidate_page.type_candidate_petr_name()
+    #     self.recruitment_candidate_page.click_on_hint_item()
+    #     self.recruitment_candidate_page.click_on_search_btn()
+    #     self.recruitment_candidate_page.is_found_candidate()
 
-    # def test_hide_block(self):
+    # def test_found_invalid_data(self):
     #     self.login_page.open()
     #     self.login_page.enter_login()
     #     self.login_page.enter_password()
     #     self.login_page.click_on_submit_button()
-    #     self.pim_reports_page.click_on_pim_item()
-    #     self.pim_reports_page.click_on_report_link()
-    #     self.pim_reports_page.click_on_icon_btn()
-    #     self.pim_reports_page.is_hidden_block()
+    #     self.recruitment_candidate_page.click_on_recruitment_item()
+    #     self.recruitment_candidate_page.is_opened()
+    #     self.recruitment_candidate_page.type_invalid_name()
+    #     self.recruitment_candidate_page.click_on_hint_no_records()
+    #     self.recruitment_candidate_page.is_fond_invalid_name()
 
-class TestVacancies(BaseTest):
-
-    # def test_add_vacancy_QA(self):
+    # def test_found_no_records(self):
     #     self.login_page.open()
     #     self.login_page.enter_login()
     #     self.login_page.enter_password()
     #     self.login_page.click_on_submit_button()
-    #     self.vacancies_page.click_on_recruitment_item()
-    #     self.vacancies_page.click_on_vacancies_item()
-    #     self.vacancies_page.click_on_add_btn()
-    #     self.vacancies_page.type_petro_in_the_field()
-    #     self.vacancies_page.click_on_dropdown()
-    #     self.vacancies_page.choose_QA_from_dropdown()
-    #     self.vacancies_page.type_odis()
-    #     self.vacancies_page.click_on_hint()
-    #     self.vacancies_page.click_on_save_btn()
-    #     self.vacancies_page.click_on_vacancies_item()
-    #     self.vacancies_page.is_added_new_vacancy()
+    #     self.recruitment_candidate_page.click_on_recruitment_item()
+    #     self.recruitment_candidate_page.is_opened()
+    #     self.recruitment_candidate_page.type_invalid_date_keywords_field()
+    #     self.recruitment_candidate_page.click_on_search_btn()
+    #     self.recruitment_candidate_page.is_fond_no_records_keyword_field()
 
-    # def test_vacancy_existed(self):
+    # def test_hidden_block(self):
     #     self.login_page.open()
     #     self.login_page.enter_login()
     #     self.login_page.enter_password()
     #     self.login_page.click_on_submit_button()
-    #     self.vacancies_page.click_on_recruitment_item()
-    #     self.vacancies_page.click_on_vacancies_item()
-    #     self.vacancies_page.click_on_add_btn()
-    #     self.vacancies_page.type_petro_in_the_field()
-    #     self.vacancies_page.is_already_existed_position()
+    #     self.recruitment_candidate_page.click_on_recruitment_item()
+    #     self.recruitment_candidate_page.is_opened()
+    #     self.recruitment_candidate_page.is_hidden_block()
 
-    def test_show_error_when_empty_field(self):
+    # def test_found_only_qa_lead_after_chosen_from_dropdown(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.recruitment_candidate_page.click_on_recruitment_item()
+    #     self.recruitment_candidate_page.is_opened()
+    #     self.recruitment_candidate_page.click_on_dropdown()
+    #     self.recruitment_candidate_page.choose_qa_lead_from_dropdown()
+    #     self.recruitment_candidate_page.click_on_search_btn()
+    #     self.recruitment_candidate_page.are_fonded_qa_lead_when_chosen_from_dropdown()
+
+
+    # def test_found_only_sales_after_chosen_from_dropdown(self):
+    #     self.login_page.open()
+    #     self.login_page.enter_login()
+    #     self.login_page.enter_password()
+    #     self.login_page.click_on_submit_button()
+    #     self.recruitment_candidate_page.click_on_recruitment_item()
+    #     self.recruitment_candidate_page.is_opened()
+    #     self.recruitment_candidate_page.click_on_dropdown()
+    #     self.recruitment_candidate_page.choose_sales_from_dropdown()
+    #     self.recruitment_candidate_page.click_on_search_btn()
+    #     self.recruitment_candidate_page.are_fonded_sales_when_chosen_from_dropdown()
+
+
+    def test_found_only_manager_chosen_from_dropdown(self):
         self.login_page.open()
         self.login_page.enter_login()
         self.login_page.enter_password()
         self.login_page.click_on_submit_button()
-        self.vacancies_page.click_on_recruitment_item()
-        self.vacancies_page.click_on_vacancies_item()
-        self.vacancies_page.click_on_add_btn()
-        self.vacancies_page.click_on_save_btn()
-        self.vacancies_page.is_shown_error_when_empty_field()
+        self.recruitment_candidate_page.click_on_recruitment_item()
+        self.recruitment_candidate_page.is_opened()
+        self.recruitment_candidate_page.click_on_dropdown()
+        self.recruitment_candidate_page.choose_it_manager_from_dropdown()
+        self.recruitment_candidate_page.click_on_search_btn()
+        self.recruitment_candidate_page.are_fonded_manager_when_chosen_from_dropdown()
 
 
 

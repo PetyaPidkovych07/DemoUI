@@ -6,6 +6,7 @@ from pages.nationalities_page import AdminNationalities
 from pages.directory_page import Directory
 from pages.pim_reports_page import PimReports
 from pages.vacancies_page import Vacancies
+from pages.recruitment_candidates_page import Recruitment_Candidate
 
 
 
@@ -20,6 +21,7 @@ class BaseTest:
     directory_page = Directory
     pim_reports_page = PimReports
     vacancies_page = Vacancies
+    recruitment_candidate_page = Recruitment_Candidate
 
 
     @pytest.fixture(autouse=True)
@@ -32,6 +34,7 @@ class BaseTest:
         request.cls.directory_page = Directory(driver)
         request.cls.pim_reports_page = PimReports(driver)
         request.cls.vacancies_page = Vacancies(driver)
+        request.cls.recruitment_candidate_page = Recruitment_Candidate(driver)
 
 
 

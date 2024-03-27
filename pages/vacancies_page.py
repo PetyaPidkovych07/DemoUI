@@ -1,5 +1,6 @@
 import time
 
+from selenium.common import NoSuchElementException
 from selenium.webdriver import ActionChains
 
 from base.base_page import BasePage
@@ -65,6 +66,12 @@ class Vacancies(BasePage):
     def choose_QA_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_SELECT_ITEM_FROM_JOB_TITTLE)).click()
 
+    def choose_engineer_from_dropdown(self):
+        self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_SELECT_ITEM_FROM_SOFT_TITTLE)).click()
+
+    def choose_sales_from_dropdown(self):
+        self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_SELECT_ITEM_FROM_SALES_TITTLE)).click()
+
     def type_odis(self):
         self.wait.until(EC.element_to_be_clickable(self.HIRING_INPUT)).send_keys('Odis')
 
@@ -74,6 +81,10 @@ class Vacancies(BasePage):
     def click_on_save_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SAVE_BTN)).click()
         time.sleep(2)
+
+    def click_on_search_btn(self):
+        self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
+
 
     def is_added_new_vacancy(self):
         self.wait.until(EC.element_to_be_clickable(self.VACANCIES_LINK)).click()
@@ -87,3 +98,62 @@ class Vacancies(BasePage):
     def is_shown_error_when_empty_field(self):
         text_error = self.wait.until(EC.visibility_of_element_located(self.ERROR_REQUIRED)).text
         assert text_error == 'Required'
+
+    def is_displayed_engineer_in_table(self):
+        time.sleep(2)
+        vacancy = []
+        job_title = []
+
+        try:
+
+
+            for i in range(1, 6):
+                vacancy_column = self.wait.until(EC.visibility_of_all_elements_located(self.All_USERS))
+                for user in vacancy_column:
+                    vacancy.append(user.find_element("xpath", ".//div[contains(@class, 'oxd-table-cell oxd-padding-cell')][2]").text)
+                    job_title.append(user.find_element("xpath",".//div[contains(@class, 'oxd-table-cell oxd-padding-cell')][3]").text)
+
+                xpath_text = "(//nav[@role='navigation']//ul[@class='oxd-pagination__ul']//li[" + str(i) + "])"
+                time.sleep(2)
+                self.driver.find_element("xpath", xpath_text).click()
+        except NoSuchElementException:
+            pass
+
+        list = ["Software Engineer", "Software Engineer"]
+        print(list)
+
+        print(f"Users: {vacancy}")
+        print(f"Job Title: {job_title}")
+
+        assert len(job_title) == 2
+        assert list == job_title
+
+
+    def is_displayed_sales_in_table(self):
+        time.sleep(2)
+        vacancy = []
+        job_title = []
+
+        try:
+
+
+            for i in range(1, 6):
+                vacancy_column = self.wait.until(EC.visibility_of_all_elements_located(self.All_USERS))
+                for user in vacancy_column:
+                    vacancy.append(user.find_element("xpath", ".//div[contains(@class, 'oxd-table-cell oxd-padding-cell')][2]").text)
+                    job_title.append(user.find_element("xpath",".//div[contains(@class, 'oxd-table-cell oxd-padding-cell')][3]").text)
+
+                xpath_text = "(//nav[@role='navigation']//ul[@class='oxd-pagination__ul']//li[" + str(i) + "])"
+                time.sleep(2)
+                self.driver.find_element("xpath", xpath_text).click()
+        except NoSuchElementException:
+            pass
+
+        list = ["Sales Representative"]
+        print(list)
+
+        print(f"Users: {vacancy}")
+        print(f"Job Title: {job_title}")
+
+        assert len(job_title) == 1
+        assert list == job_title
