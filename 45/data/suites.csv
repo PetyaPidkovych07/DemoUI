@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Thu Mar 28 08:23:29 GMT 2024","Thu Mar 28 08:23:39 GMT 2024","10265","tests","features_profile_test","TestRecruitmentCandidate","","","test_found_only_manager_chosen_from_dropdown",""
