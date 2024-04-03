@@ -19,6 +19,7 @@ class Directory(BasePage):
     DROPDOWN_LOCATION = ("xpath", "(//div//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow' ])[2]")
     SELECT_ITEM_LOCATION_FORM_DROPDOWN = ("xpath", "//div[@role='listbox']//span[text()='Texas R&D']")
     SELECT_ITEM_HR_FORM_DROPDOWN = ("xpath", "//div[@role='listbox']//span[text()='HR Manager']")
+    SELECT_ITEM_QA_FORM_DROPDOWN = ("xpath", "//div[@role='listbox']//span[text()='QA Engineer']")
     SELECT_ITEM_ACCOUNT_FROM_DROPDOWN = ("xpath", "//div[@role='listbox']//span[text()='Account Assistant']")
     SELECT_ITEM_CHIEF_EXECUTIVE_FROM_DROPDOWN = (
     "xpath", "//div[@role='listbox']//span[text()='Chief Executive Officer']")
@@ -92,6 +93,12 @@ class Directory(BasePage):
     def choose_hr_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.SELECT_ITEM_HR_FORM_DROPDOWN)).click()
 
+    def choose_support_specialist_from_dropdown(self):
+        self.wait.until(EC.element_to_be_clickable(self.SELECT_ITEM_SUPPORT_SPESIALIST_FROM_DROPDOWN)).click()
+
+    def choose_qa_from_dropdown(self):
+        self.wait.until(EC.element_to_be_clickable(self.SELECT_ITEM_QA_FORM_DROPDOWN)).click()
+
     def choose_job_title_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_SELECT_ITEM_FROM_JOB_TITTLE)).click()
 
@@ -103,6 +110,10 @@ class Directory(BasePage):
 
     def click_on_search_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
+
+    def is_no_records(self):
+        text = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION_NO_RECORDS)).text
+        assert text == 'No Records Found'
 
     def is_present_software_in_table(self):
         results = self.wait.until(EC.visibility_of_all_elements_located(self.NAME_EMPLOYEE_FROM_PROFILE))
@@ -137,6 +148,16 @@ class Directory(BasePage):
         name_employee = ['Chief Technical Officer']
         assert name_employee == size_list
 
+    def is_present_qa_in_table(self):
+        results = self.wait.until(EC.visibility_of_all_elements_located(self.HR_MANAGER))
+        size_list = []
+
+        for size in results:
+            size_list.append(size.text)
+        print(size_list)
+
+        name_employee = ['QA Engineer']
+        assert name_employee == size_list
 
     def is_displayed_locations__in_dropdown(self):
         location = self.wait.until(EC.visibility_of_all_elements_located(self.LOCATION_EMPLOYEE_FROM_PROFILE))

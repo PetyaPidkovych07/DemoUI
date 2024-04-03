@@ -19,4 +19,6 @@ class Links:
     RECRUITMENT_VACANCIES = f"{HOST}/recruitment/viewJobVacancy"
 
     RECRUITMENT_CANDIDATES = f"{HOST}/recruitment/viewCandidates"
+
+    RESET_PASSWORD_PAGE = f"{HOST}/auth/requestPasswordResetCode"
     

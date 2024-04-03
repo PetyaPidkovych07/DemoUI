@@ -7,7 +7,7 @@ from pages.directory_page import Directory
 from pages.pim_reports_page import PimReports
 from pages.vacancies_page import Vacancies
 from pages.recruitment_candidates_page import Recruitment_Candidate
-
+from pages.forgot_password_page import ForgotPasswordPage
 
 
 
@@ -22,6 +22,7 @@ class BaseTest:
     pim_reports_page = PimReports
     vacancies_page = Vacancies
     recruitment_candidate_page = Recruitment_Candidate
+    forgot_password_page = ForgotPasswordPage
 
 
     @pytest.fixture(autouse=True)
@@ -35,6 +36,7 @@ class BaseTest:
         request.cls.pim_reports_page = PimReports(driver)
         request.cls.vacancies_page = Vacancies(driver)
         request.cls.recruitment_candidate_page = Recruitment_Candidate(driver)
+        request.cls.forgot_password_page = ForgotPasswordPage(driver)
 
 
 

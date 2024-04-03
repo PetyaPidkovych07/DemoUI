@@ -53,23 +53,24 @@ class AdminNationalities(BasePage):
     def click_on_add_item(self):
         self.wait.until(EC.element_to_be_clickable(self.ADD_BTN)).click()
 
+    def click_on_edit_btn(self):
+        self.wait.until(EC.element_to_be_clickable(self.EDIT_BTN)).click()
+
+    def click_on_delete_btn(self):
+        self.wait.until(EC.element_to_be_clickable(self.APPEAR_DEL_BTN)).click()
+
+    def click_on_yes_confirm(self):
+        self.wait.until(EC.element_to_be_clickable(self.YES_DELETE_ITEM)).click()
+
+    def type_data(self):
+        self.wait.until(EC.element_to_be_clickable(self.INPUT)).send_keys("bro")
+
     def type_ukraine(self):
         self.wait.until(EC.element_to_be_clickable(self.INPUT)).send_keys("Ukraine")
 
     def click_on_save_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SAVE_BTN)).click()
 
-    def is_saved_country(self):
-        push_text = self.wait.until(EC.element_to_be_clickable(self.PUSH_NOTIFICATION_SUCCESSS)).text
-        assert push_text == 'Successfully Saved'
-
-    def is_showed_error(self):
-        text = self.wait.until(EC.visibility_of_element_located(self.ERROR_EXSITS)).text
-        assert text == 'Already exists'
-
-    def is_empty_error(self):
-        text = self.wait.until(EC.visibility_of_element_located(self.ERROR_REQUIRED)).text
-        assert text == 'Required'
 
     def type_kyiv(self):
         self.wait.until(EC.element_to_be_clickable(self.INPUT)).send_keys("Kyiv")
@@ -96,11 +97,50 @@ class AdminNationalities(BasePage):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollDown);")
         time.sleep(5)
 
-    def click_on_delete_btn(self):
+    def is_deleted_porto(self):
+        expected_client = "Portu"
+        xpath_text1 = "//div[@class='oxd-table-card']//div[text()='" + expected_client + "']"
+        for i in range(1, 6):
+            try:
+                if self.driver.find_element("xpath", xpath_text1).is_displayed():
+                    self.driver.find_element("xpath", xpath_text1 + "/../../div[1]").click()
+                    time.sleep(2)
+                    break
+            except NoSuchElementException:
+                pass
+            xpath_text = "(//nav[@role='navigation']//ul[@class='oxd-pagination__ul']//li[" + str(i) + "])"
+            time.sleep(2)
+            self.driver.find_element("xpath", xpath_text).click()
+            time.sleep(2)
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollDown);")
+        time.sleep(5)
         self.wait.until(EC.element_to_be_clickable(self.APPEAR_DEL_BTN)).click()
+        time.sleep(2)
+        self.wait.until(EC.presence_of_element_located(self.YES_DELETE_ITEM)).click()
+        x = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION_DELETE)).text
+        assert x == 'Successfully Deleted'
 
-    def click_on_yes_confirm(self):
-        self.wait.until(EC.element_to_be_clickable(self.YES_DELETE_ITEM)).click()
+
+    def is_saved_country(self):
+        push_text = self.wait.until(EC.element_to_be_clickable(self.PUSH_NOTIFICATION_SUCCESSS)).text
+        assert push_text == 'Successfully Saved'
+
+    def is_added_porto(self):
+        push_text = self.wait.until(EC.element_to_be_clickable(self.PUSH_NOTIFICATION_SUCCESSS)).text
+        assert push_text == 'Successfully Saved'
+
+    def is_showed_error(self):
+        text = self.wait.until(EC.visibility_of_element_located(self.ERROR_EXSITS)).text
+        assert text == 'Already exists'
+
+    def is_empty_error(self):
+        text = self.wait.until(EC.visibility_of_element_located(self.ERROR_REQUIRED)).text
+        assert text == 'Required'
+
+    def is_changed_name(self):
+        time.sleep(1)
+        text = self.wait.until(EC.presence_of_element_located(self.PUSH_SUCCSESSFULLY_UPDATE)).text
+        assert text == 'Successfully Updated'
 
     def is_deleted_country(self):
         text = self.wait.until(EC.visibility_of_element_located(self.PUSH_NOTIFICATION_DELETE)).text

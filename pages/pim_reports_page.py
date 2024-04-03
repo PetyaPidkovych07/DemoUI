@@ -54,20 +54,31 @@ class PimReports(BasePage):
     def click_on_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_FIELD_GROUP)).click()
 
+    def click_on_icon_btn(self):
+        self.wait.until(EC.element_to_be_clickable(self.ICON_BTN)).click()
+
     def choose_contact_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.CHOOSE_ITEM_FROM_DROPDOWN)).click()
 
     def click_on_plus_icon(self):
         self.wait.until(EC.element_to_be_clickable(self.ICON_PLUS)).click()
 
+    def click_on_sort_icon(self):
+        self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_NAME)).click()
+
     def click_save_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SAVE_BTN)).click()
 
-    def is_appeared_new_report(self):
-        report = self.wait.until(EC.element_to_be_clickable(self.TITTLE_H6)).text
-        assert report == "pedro"
+    def click_on_delete_icon(self):
+        self.wait.until(EC.element_to_be_clickable(self.ICON_DELETE)).click()
+
+    def click_on_yes_confirm(self):
+        self.wait.until(EC.element_to_be_clickable(self.YES_DELETE_BTN)).click()
 
 
+
+    def type_invalid_date(self):
+        self.wait.until(EC.element_to_be_clickable(self.REPORT_NAME_INPUT2)).send_keys("gdfsghsdfghdsfghdfsg")
 
     def type_ped(self):
         self.wait.until(EC.element_to_be_clickable(self.REPORT_NAME_INPUT2)).send_keys("pedr")
@@ -82,28 +93,18 @@ class PimReports(BasePage):
         x = self.wait.until(EC.visibility_of_element_located(self.TABLE_ROW)).text
         assert x == "pedro"
 
-    def type_invalid_date(self):
-        self.wait.until(EC.element_to_be_clickable(self.REPORT_NAME_INPUT2)).send_keys("gdfsghsdfghdsfghdfsg")
+    def is_appeared_new_report(self):
+        report = self.wait.until(EC.element_to_be_clickable(self.TITTLE_H6)).text
+        assert report == "pedro"
 
 
     def is_searched_invalid_report(self):
         x = self.wait.until(EC.visibility_of_element_located(self.SPAN_ERROR)).text
         assert x == "Invalid"
 
-
-    def click_on_delete_icon(self):
-        self.wait.until(EC.element_to_be_clickable(self.ICON_DELETE)).click()
-
-    def click_on_yes_confirm(self):
-        self.wait.until(EC.element_to_be_clickable(self.YES_DELETE_BTN)).click()
-
     def is_successfully_deleted_report(self):
         x = self.wait.until(EC.element_to_be_clickable(self.PUSH_NOTIFICATION)).text
         assert x == "Successfully Deleted"
-
-    def click_on_sort_icon(self):
-        self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_NAME)).click()
-
 
     def is_sorted_ascending_name(self):
         action = ActionChains(self.driver)
@@ -135,10 +136,6 @@ class PimReports(BasePage):
         y = ['PIM Sample Report', 'Employee Job Details', 'Employee Contact info report','All Employee Sub Unit Hierarchy Report']
         print(y)
         assert all([a == b for a, b in zip(size_list, y)])
-
-
-    def click_on_icon_btn(self):
-        self.wait.until(EC.element_to_be_clickable(self.ICON_BTN)).click()
 
 
     def is_hidden_block(self):
