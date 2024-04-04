@@ -119,13 +119,13 @@ class Vacancies(BasePage):
         except NoSuchElementException:
             pass
 
-        list = ["Software Engineer", "Software Engineer"]
+        list = ["Software Engineer"]
         print(list)
 
         print(f"Users: {vacancy}")
         print(f"Job Title: {job_title}")
 
-        assert len(job_title) == 2
+        assert len(job_title) == 1
         assert list == job_title
 
 
