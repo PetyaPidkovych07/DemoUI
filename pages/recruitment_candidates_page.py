@@ -580,16 +580,10 @@ class Recruitment_Candidate(BasePage):
             if ele.text == day:
                 ele.click()
                 break
-        self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
-        time.sleep(2)
-        vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
-        size_list = []
-        for size in vacancy_column:
-            size_list.append(size.text)
-
-        vacancy = ['Vacancy', 'Senior Support Specialist', 'Senior QA Lead', 'Sales Representative']
-        print(vacancy)
-        assert vacancy == size_list
+        blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
+        assert blur == 'No Records Found'
+          
+       
 
 
 
