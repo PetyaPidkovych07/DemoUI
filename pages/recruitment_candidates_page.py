@@ -217,8 +217,7 @@ class Recruitment_Candidate(BasePage):
                    'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead',
                    'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead',
                    'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead',
-                   'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead',
-                   'Senior QA Lead', 'Senior QA Lead']
+                   'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead']
         print(vacancy)
         assert vacancy == size_list
 
@@ -261,7 +260,7 @@ class Recruitment_Candidate(BasePage):
             size_list.append(size.text)
         print(size_list)
 
-        vacancy = ['Vacancy', 'Software Engineer', 'Software Engineer', 'Software Engineer']
+        vacancy = ['Vacancy', 'Software Engineer', 'Software Engineer']
         print(vacancy)
         assert vacancy == size_list
 
