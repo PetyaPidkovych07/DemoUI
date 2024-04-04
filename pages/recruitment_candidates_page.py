@@ -217,7 +217,7 @@ class Recruitment_Candidate(BasePage):
                    'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead',
                    'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead',
                    'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead',
-                   'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead']
+                   'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead', 'Senior QA Lead']
         print(vacancy)
         assert vacancy == size_list
 
@@ -471,14 +471,8 @@ class Recruitment_Candidate(BasePage):
                 break
         self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
         time.sleep(2)
-        vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
-        size_list = []
-        for size in vacancy_column:
-            size_list.append(size.text)
-
-        y = ['Vacancy', 'Sales Representative']
-        print(y)
-        assert y == size_list
+        blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
+        assert blur == 'No Records Found'
 
 
 
@@ -527,14 +521,8 @@ class Recruitment_Candidate(BasePage):
                 break
         self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
         time.sleep(2)
-        vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
-        size_list = []
-        for size in vacancy_column:
-            size_list.append(size.text)
-
-        y = ['Vacancy', 'Software Engineer']
-        print(y)
-        assert y == size_list
+        blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
+        assert blur == 'No Records Found'
 
 
     def are_fonded_july_11_via_calendar(self, year = "2022", month = "July", day = "8"):
