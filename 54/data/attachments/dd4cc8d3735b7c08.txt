@@ -1,0 +1,2 @@
+[<selenium.webdriver.remote.webelement.WebElement (session="8ff4fc4898757c9d90694da4ad7f2870", element="f.A330DDD54409E98EF9199C9F7C76F09E.d.E30077A00330513CBBFF732E023C3988.e.55")>]
+Show only software employee: russel1@osohrm.com
