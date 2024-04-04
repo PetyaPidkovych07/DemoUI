@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Apr 04 06:43:10 GMT 2024","Thu Apr 04 06:43:15 GMT 2024","5353","tests","features_profile_test","TestForgotPassword","","","test_back_page",""
+"passed","Thu Apr 04 06:43:16 GMT 2024","Thu Apr 04 06:43:21 GMT 2024","5492","tests","features_profile_test","TestForgotPassword","","","test_sent_reset_password",""
+"passed","Thu Apr 04 06:43:06 GMT 2024","Thu Apr 04 06:43:10 GMT 2024","3973","tests","features_profile_test","TestForgotPassword","","","test_shown_error",""
