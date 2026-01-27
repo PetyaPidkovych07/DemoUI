@@ -1,54 +1,50 @@
-
-
-
-
-
 name: UI Tests
 
-on: workflow_dispatch
-
-#push:
-#    branches-ignore:
-#      - '!master'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   linter:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-        env:
-          GIT_TRACE: 1
-          GIT_CURL_VERBOSE: 1
-
-      - name: Set up Python 3.x
+      - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          python-version: '3.10'
 
-      - name: Check code style
-        if: always()
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Upgrade pip
         run: |
-          python3 -m pip install --upgrade pip
-          
+          python -m pip install --upgrade pip
+
 
   autotests:
     needs: linter
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/setup-python@v5
-      - name: Set up Python 3.x
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Test
-        if: always()
-        run: python -m pytest --alluredir=allure-results
+      - name: Run tests
+        run: |
+          python -m pytest --alluredir=allure-results
         continue-on-error: true
 
       - name: Get Allure history
@@ -59,31 +55,105 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Allure Report action from marketplace
+      - name: Generate Allure report
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
           allure_results: allure-results
           allure_history: allure-history
 
-
-
-#      - name: Run UI-tests via docker-compose
-#        env:
-#          LOGIN: ${{ secrets.LOGIN }}
-#          PASSWORD: ${{ secrets.PASSWORD }}
-#        run: |
-#          docker-compose up --exit-code-from regression || true
-
-#      - name: Generate Allure report
-#        run: |
-#          sudo docker-compose run regression /bin/sh -c "allure generate allure-results --clean -o allure-report"
-
-
-      - name: Deploy report to Github Pages
-        if: always()
+      - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v2
+        if: always()
         env:
           PERSONAL_TOKEN: ${{ secrets.TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+
+
+
+
+# name: UI Tests
+
+# on: workflow_dispatch
+
+# #push:
+# #    branches-ignore:
+# #      - '!master'
+
+# jobs:
+#   linter:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#         env:
+#           GIT_TRACE: 1
+#           GIT_CURL_VERBOSE: 1
+
+#       - name: Set up Python 3.x
+#         uses: actions/checkout@v4
+#         with:
+#           python-version: '3.10'
+
+#       - name: Check code style
+#         if: always()
+#         run: |
+#           python3 -m pip install --upgrade pip
+          
+
+#   autotests:
+#     needs: linter
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/setup-python@v5
+#       - name: Set up Python 3.x
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.10'
+
+#       - name: Install dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
+
+#       - name: Run Test
+#         if: always()
+#         run: python -m pytest --alluredir=allure-results
+#         continue-on-error: true
+
+#       - name: Get Allure history
+#         uses: actions/checkout@v4
+#         if: always()
+#         continue-on-error: true
+#         with:
+#           ref: gh-pages
+#           path: gh-pages
+
+#       - name: Allure Report action from marketplace
+#         uses: simple-elf/allure-report-action@master
+#         if: always()
+#         with:
+#           allure_results: allure-results
+#           allure_history: allure-history
+
+
+
+# #      - name: Run UI-tests via docker-compose
+# #        env:
+# #          LOGIN: ${{ secrets.LOGIN }}
+# #          PASSWORD: ${{ secrets.PASSWORD }}
+# #        run: |
+# #          docker-compose up --exit-code-from regression || true
+
+# #      - name: Generate Allure report
+# #        run: |
+# #          sudo docker-compose run regression /bin/sh -c "allure generate allure-results --clean -o allure-report"
+
+
+#       - name: Deploy report to Github Pages
+#         if: always()
+#         uses: peaceiris/actions-gh-pages@v2
+#         env:
+#           PERSONAL_TOKEN: ${{ secrets.TOKEN }}
+#           PUBLISH_BRANCH: gh-pages
+#           PUBLISH_DIR: allure-history
