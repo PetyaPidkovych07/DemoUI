@@ -1,3 +1,0 @@
-['Software Engineer', 'Software Engineer']
-Users: ['Java Developer', 'Software Engineer']
-Job Title: ['Software Engineer', 'Software Engineer']
