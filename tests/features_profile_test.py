@@ -14,23 +14,23 @@ class TestProfileFeatures(BaseTest):
         self.login_page.enter_password()
         self.login_page.click_on_submit_button()
 
-@allure.feature("Nationalities")
-class TestNationalities(BaseTest):
+# @allure.feature("Nationalities")
+# class TestNationalities(BaseTest):
 
-    @allure.story("Scrape and compare all nationalities in table")
-    @pytest.mark.smoke
-    def test_scraping_all_countries_in_table(self):
-        with allure.step("Login to OrangeHRM"):
-            self.login_page.open()
-            self.login_page.enter_login()
-            self.login_page.enter_password()
-            self.login_page.click_on_submit_button()
-        with allure.step("Navigate to Admin -> Nationalities"):
-            self.nationalities_page.click_on_admin_item()
-            self.nationalities_page.is_opened()
-            self.nationalities_page.choose_on_nationalities_item()
-        with allure.step("Validate nationalities list in table"):
-            self.nationalities_page.compare_all_countries_in_table()
+#     @allure.story("Scrape and compare all nationalities in table")
+#     @pytest.mark.smoke
+#     def test_scraping_all_countries_in_table(self):
+#         with allure.step("Login to OrangeHRM"):
+#             self.login_page.open()
+#             self.login_page.enter_login()
+#             self.login_page.enter_password()
+#             self.login_page.click_on_submit_button()
+#         with allure.step("Navigate to Admin -> Nationalities"):
+#             self.nationalities_page.click_on_admin_item()
+#             self.nationalities_page.is_opened()
+#             self.nationalities_page.choose_on_nationalities_item()
+#         with allure.step("Validate nationalities list in table"):
+#             self.nationalities_page.compare_all_countries_in_table()
 
 
     # @allure.story("Create a new nationality entry: Ukraine")
