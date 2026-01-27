@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
@@ -90,98 +91,117 @@ class Recruitment_Candidate(BasePage):
     CANDIDATE_WITH_JULY = ("xpath", "//div[text()= 'Jennifer  Clinton']")
     PUSH_NOTIFICATION = ("xpath", "//p[text()='No Records Found']")
 
-
+    @allure.step("Click menu: Recruitment")
     def click_on_recruitment_item(self):
         self.wait.until(EC.element_to_be_clickable(self.CHOOSE_RECRUITMENT_FROM_MENU)).click()
 
+    @allure.step("Click button: Add candidate")
     def click_on_add_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.ADD_BTN)).click()
 
+    @allure.step("Enter first name: Petro")
     def type_name_in_the_field(self):
         self.wait.until(EC.element_to_be_clickable(self.FIRST_NAME_INPUT)).send_keys("Petro")
 
+    @allure.step("Enter last name: Pidkovych")
     def type__last_name_in_the_field(self):
         self.wait.until(EC.element_to_be_clickable(self.LAST_NAME_INPUT)).send_keys("Pidkovych")
 
+    @allure.step("Open vacancy dropdown")
     def click_on_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN)).click()
 
+    @allure.step("Select vacancy: QA Lead")
     def choose_QA_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.ITEM_QA_LEAD_FROM_DROPDOWN)).click()
 
+    @allure.step("Enter email: test@gmail.com")
     def type_email(self):
         self.wait.until(EC.element_to_be_clickable(self.EMAIL_INPUT)).send_keys(
             "test@gmail.com")
 
-
+    @allure.step("Enter candidate name: Petr")
     def type_candidate_petr_name(self):
         self.wait.until(EC.element_to_be_clickable(self.CANDIDATE_NAME_INPUT)).send_keys(
             "Petr")
 
+    @allure.step("Enter invalid candidate name")
     def type_invalid_name(self):
         self.wait.until(EC.element_to_be_clickable(self.CANDIDATE_NAME_INPUT)).send_keys(
             'dfhjdf')
 
+    @allure.step("Enter invalid keywords")
     def type_invalid_date_keywords_field(self):
         self.wait.until(EC.element_to_be_clickable(self.KEYWORDS_INPUT)).send_keys(
             'dfhjdf')
 
+    @allure.step("Select hint from search dropdown")
     def click_on_hint_item(self):
         self.wait.until(EC.element_to_be_clickable(self.HINT_ITEM_IN_SEARCH)).click()
 
+    @allure.step("Select 'No Records' hint from search dropdown")
     def click_on_hint_no_records(self):
         self.wait.until(EC.element_to_be_clickable(self.HINT_ITEM_NO_RECORDS)).click()
 
+    @allure.step("Click button: Save")
     def click_on_save_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SAVE_BTN)).click()
 
+    @allure.step("Click icon: Hide candidate block")
     def click_on_icon_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.ICON_BUTTON)).click()
 
+    @allure.step("Click sort icon for Vacancy column")
     def click_on_sort_icon_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_VACANCY)).click()
 
+    @allure.step("Click button: Search")
     def click_on_search_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
         time.sleep(2)
 
+    @allure.step("Open Status dropdown")
     def click_on_status_dropdown_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.STATUS_DROPDOWN)).click()
 
+    @allure.step("Click sort icon for Candidate column")
     def click_on_sort_icon_candidate(self):
         self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_CANDIDATE)).click()
 
+    @allure.step("Click sort icon for Hiring Manager column")
     def click_on_sort_icon_hiring(self):
         self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_HIRING)).click()
 
+    @allure.step("Open calendar date picker")
     def click_on_icon_from_calendar(self):
         self.wait.until(EC.element_to_be_clickable(self.ICON_FROM_CALENDAR)).click()
 
+    @allure.step("Select status: Rejected")
     def choose_rejected_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.ITEM_REJECTED_FROM_DROPDOWN)).click()
 
-
+    @allure.step("Select vacancy: QA Lead")
     def choose_qa_lead_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.ITEM_QA_LEAD2_FROM_DROPDOWN)).click()
 
+    @allure.step("Select vacancy: Sales Representative")
     def choose_sales_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.ITEM_QA_LEAD4_FROM_DROPDOWN)).click()
 
-
+    @allure.step("Select vacancy: Associate IT Manager")
     def choose_it_manager_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.ITEM_QA_LEAD5_FROM_DROPDOWN)).click()
 
+    @allure.step("Select vacancy: Software Engineer")
     def choose_software_engineer_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.ITEM_QA_LEAD3_FROM_DROPDOWN)).click()
 
-
-
-
-
+    @allure.step("Validate candidate is added successfully")
     def is_added_a_new_candidate(self):
         x = self.wait.until(EC.element_to_be_clickable(self.SUCCESSFULLY_SAVED_PUSH_NOTIFICATION)).text
         assert x == 'Successfully Saved'
 
+    @allure.step("Validate required field error is displayed")
     def is_shown_required_error(self):
         x = self.wait.until(EC.element_to_be_clickable(self.ERROR_REQUIRED)).text
         assert x == 'Required'
@@ -191,19 +211,21 @@ class Recruitment_Candidate(BasePage):
         time.sleep(1)
         assert self.wait.until(EC.visibility_of_element_located(self.TABLE_ROW)).is_displayed()
 
-
+    @allure.step("Validate candidate is found in table")
     def is_fond_invalid_name(self):
         element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.ERROR_INVALID)).text
         assert element == 'Invalid'
 
+    @allure.step("Validate 'No Records Found' is displayed")
     def is_fond_no_records_keyword_field(self):
         text = self.wait.until(EC.element_to_be_clickable(self.NO_RECORDS)).text
         assert text == 'No Records Found'
 
+    @allure.step("Validate candidate block is hidden")
     def is_hidden_block(self):
         assert self.wait.until(EC.invisibility_of_element_located(self.CANDIDATE_BLOCK))
 
-
+    @allure.step("Validate only QA Lead vacancies are displayed")
     def are_fonded_qa_lead_when_chosen_from_dropdown(self):
         vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
         size_list = []
@@ -222,7 +244,7 @@ class Recruitment_Candidate(BasePage):
         print(vacancy)
         assert vacancy == size_list
 
-
+    @allure.step("Validate only Sales vacancies are displayed")
     def are_fonded_sales_when_chosen_from_dropdown(self):
         vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
         size_list = []
@@ -235,6 +257,7 @@ class Recruitment_Candidate(BasePage):
         print(vacancy)
         assert vacancy == size_list
 
+    @allure.step("Validate only Associate IT Manager vacancies are displayed")
     def are_fonded_manager_when_chosen_from_dropdown(self):
         vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
         size_list = []
@@ -253,7 +276,7 @@ class Recruitment_Candidate(BasePage):
         print(vacancy)
         assert vacancy == size_list
 
-
+    @allure.step("Validate only Software Engineer vacancies are displayed")
     def are_fonded_software_enginner_when_chosen_from_dropdown(self):
         vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
         size_list = []
@@ -276,30 +299,80 @@ class Recruitment_Candidate(BasePage):
         print(vacancy)
         assert vacancy == size_list
 
+    @allure.step("Validate vacancies are sorted in ascending order (per page, ignore empty rows)")
     def are_sorted_ascending_vacancy_in_table(self):
         action = ActionChains(self.driver)
         element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_VACANCY_AS))
         action.move_to_element(element).click().perform()
-        vacancy = []
 
         try:
-
             for i in range(1, 6):
-                vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.All_USERS))
-                for user in vacancy_column:
-                    vacancy.append(user.find_element("xpath",".//div[contains(@class, 'oxd-table-cell oxd-padding-cell')][2]").text)
+                vacancy = []
 
+                vacancy_rows = self.wait.until(EC.presence_of_all_elements_located(self.All_USERS))
+                for row in vacancy_rows:
+                    vacancy.append(
+                        row.find_element(
+                            "xpath",
+                            ".//div[contains(@class, 'oxd-table-cell oxd-padding-cell')][2]"
+                        ).text
+                    )
+
+                # --- DEBUG PRINTS ---
+                print(f"\n--- PAGE {i} ---")
+                print(f"Vacancy (raw): {vacancy}")
+
+                # прибираємо пусті рядки
+                filtered = [v for v in vacancy if v.strip() != ""]
+
+                print(f"Vacancy (filtered): {filtered}")
+
+                # будуємо очікувано відсортований список
+                expected_sorted = sorted(filtered)
+
+                print(f"Expected sorted:     {expected_sorted}")
+
+                # --- ASSERT ---
+                assert filtered == expected_sorted, (
+                    f"Vacancy column is not sorted in ascending order on page {i}.\n"
+                    f"Actual:   {filtered}\n"
+                    f"Expected: {expected_sorted}"
+                )
+
+                # --- ПЕРЕХІД НА НАСТУПНУ СТОРІНКУ ---
                 xpath_text = "(//nav[@role='navigation']//ul[@class='oxd-pagination__ul']//li[" + str(i) + "])"
                 time.sleep(2)
                 self.driver.find_element("xpath", xpath_text).click()
+
         except NoSuchElementException:
             pass
 
-        y = 'Associate IT Manager', 'Senior QA Lead', 'Software Engineer' in vacancy
-        print(y)
+    # @allure.step("Validate vacancies are sorted in ascending order")
+    # def are_sorted_ascending_vacancy_in_table(self):
+    #     action = ActionChains(self.driver)
+    #     element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_VACANCY_AS))
+    #     action.move_to_element(element).click().perform()
+    #     vacancy = []
+    #
+    #     try:
+    #
+    #         for i in range(1, 6):
+    #             vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.All_USERS))
+    #             for user in vacancy_column:
+    #                 vacancy.append(user.find_element("xpath",".//div[contains(@class, 'oxd-table-cell oxd-padding-cell')][2]").text)
+    #
+    #             xpath_text = "(//nav[@role='navigation']//ul[@class='oxd-pagination__ul']//li[" + str(i) + "])"
+    #             time.sleep(2)
+    #             self.driver.find_element("xpath", xpath_text).click()
+    #     except NoSuchElementException:
+    #         pass
+    #
+    #     y = 'Associate IT Manager', 'Senior QA Lead', 'Software Engineer' in vacancy
+    #     print(y)
+    #
+    #     print(f"Users: {vacancy}")
 
-        print(f"Users: {vacancy}")
-
+    @allure.step("Validate candidates are sorted in descending order")
     def are_sorted_descending_vacancy_in_table(self):
         action = ActionChains(self.driver)
         element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_VACANCY_DES))
@@ -325,8 +398,7 @@ class Recruitment_Candidate(BasePage):
 
         print(f"Users: {vacancy}")
 
-
-
+    @allure.step("Validate candidates are sorted in ascending order")
     def are_sorted_ascending_candidate_in_table(self):
         action = ActionChains(self.driver)
         element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_CANDIDATE_AS))
@@ -352,8 +424,7 @@ class Recruitment_Candidate(BasePage):
 
         print(f"Users: {candidate}")
 
-
-
+    @allure.step("Validate candidates are sorted in descending order")
     def are_sorted_descending_candidate_in_table(self):
         action = ActionChains(self.driver)
         element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_CANDIDATE_DES))
@@ -379,6 +450,7 @@ class Recruitment_Candidate(BasePage):
 
         print(f"Users: {candidate}")
 
+    @allure.step("Validate hiring managers are sorted in ascending order")
     def are_sorted_ascending_hiring_in_table(self):
         action = ActionChains(self.driver)
         element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_HIRING_AS))
@@ -403,7 +475,7 @@ class Recruitment_Candidate(BasePage):
         print(y)
         print(f"Users: {hiring}")
 
-
+    @allure.step("Validate hiring managers are sorted in descending order")
     def are_sorted_descending_hiring_in_table(self):
         action = ActionChains(self.driver)
         element = self.wait.until(EC.element_to_be_clickable(self.SORT_CHOOSE_ITEM_HIRING_DES))
@@ -425,8 +497,7 @@ class Recruitment_Candidate(BasePage):
             pass
         print(f"Users: {hiring}")
 
-
-
+    @allure.step("Filter vacancies by valid date range via calendar")
     def are_fonded_valid_date_via_calendar(self, year="2022", month="July", day="15"):
         while True:
             yr = self.driver.find_element(*self.CURRENT_YEAR).text
@@ -481,8 +552,7 @@ class Recruitment_Candidate(BasePage):
         print(y)
         assert y == size_list
 
-
-
+    @allure.step("Filter vacancies for July 2022 via calendar")
     def are_fonded_july_2022_via_calendar(self, year="2022", month="July", day="12"):
         while True:
             yr = self.driver.find_element(*self.CURRENT_YEAR).text
@@ -537,7 +607,7 @@ class Recruitment_Candidate(BasePage):
         print(y)
         assert y == size_list
 
-
+    @allure.step("Filter vacancies for July 11 via calendar")
     def are_fonded_july_11_via_calendar(self, year = "2022", month = "July", day = "8"):
         while True:
             yr = self.driver.find_element(*self.CURRENT_YEAR).text
@@ -592,8 +662,7 @@ class Recruitment_Candidate(BasePage):
         print(vacancy)
         assert vacancy == size_list
 
-
-
+    @allure.step("Validate no records found for invalid date range")
     def are_fonded_invalid_data_via_calendar(self, year = "2018", month = "July", day = "9"):
         while True:
             yr = self.driver.find_element(*self.CURRENT_YEAR).text
@@ -642,9 +711,7 @@ class Recruitment_Candidate(BasePage):
         blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
         assert blur == 'No Records Found'
 
-
-
-
+    @allure.step("Validate no records found when searching invalid date range")
     def are_searched_for_invalid_data_via_calendar(self, year="2018", month="July", day ="9"):
         while True:
             yr = self.driver.find_element(*self.CURRENT_YEAR).text

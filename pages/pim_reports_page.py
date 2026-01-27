@@ -1,4 +1,4 @@
-
+import allure
 from selenium.webdriver import ActionChains
 
 from base.base_page import BasePage
@@ -21,7 +21,7 @@ class PimReports(BasePage):
     CHOOSE_ITEM_FROM_DROPDOWN = ("xpath", "//div[@role='listbox']//span[text()='Contact Details']")
     ICON_PLUS = ("xpath", "(//button[@class='oxd-icon-button orangehrm-report-icon'])[2]")
     SAVE_BTN = ("xpath", "//button[text()=' Save ']")
-    TITTLE_H6 = ("xpath", "//h6[text()='pedro']")
+    TITTLE_H6 = ("xpath", "//div[text()='pedro']")
     REPORT_NAME_INPUT2 = ("xpath", "//input[@placeholder='Type for hints...']")
     SEARCH_BTN = ("xpath", "//button[text()=' Search ']")
     HINT_FROM_INPUT = ("xpath", "//div[@role='listbox']//span[text()='pedro']")
@@ -38,70 +38,86 @@ class PimReports(BasePage):
     SORT_CHOOSE_ITEM_NAME_DES = ("xpath", "(//span[text()='Descending'])[1]")
     NAME_COLUMN = ("xpath", "//div[@class='oxd-table-cell oxd-padding-cell'][@style='flex: 1 1 85%;']")
 
-
+    @allure.step("Click menu: PIM")
     def click_on_pim_item(self):
         self.wait.until(EC.element_to_be_clickable(self.PIM_ITEM_FROM_MENU)).click()
 
+    @allure.step("Open page: Reports")
     def click_on_report_link(self):
         self.wait.until(EC.element_to_be_clickable(self.ITEM_LINK)).click()
 
+    @allure.step("Click button: Add report")
     def click_on_add_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.ADD_BTN)).click()
 
+    @allure.step("Enter report name: pedro")
     def type_pedro(self):
         self.wait.until(EC.element_to_be_clickable(self.REPORT_NAME_INPUT)).send_keys("pedro")
 
+    @allure.step("Open dropdown: Field Group")
     def click_on_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_FIELD_GROUP)).click()
 
+    @allure.step("Click icon button (open actions/settings)")
     def click_on_icon_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.ICON_BTN)).click()
 
+    @allure.step("Select dropdown item: Contact Details")
     def choose_contact_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.CHOOSE_ITEM_FROM_DROPDOWN)).click()
 
+    @allure.step("Click icon: Plus (add selected field)")
     def click_on_plus_icon(self):
         self.wait.until(EC.element_to_be_clickable(self.ICON_PLUS)).click()
 
+    @allure.step("Click icon: Sort by Name")
     def click_on_sort_icon(self):
         self.wait.until(EC.element_to_be_clickable(self.SORT_ICON_NAME)).click()
 
+    @allure.step("Click button: Save report")
     def click_save_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SAVE_BTN)).click()
 
+    @allure.step("Click icon: Delete report")
     def click_on_delete_icon(self):
         self.wait.until(EC.element_to_be_clickable(self.ICON_DELETE)).click()
 
+    @allure.step("Confirm deletion: Yes, Delete")
     def click_on_yes_confirm(self):
         self.wait.until(EC.element_to_be_clickable(self.YES_DELETE_BTN)).click()
 
-
-
+    @allure.step("Enter invalid search value in report name field")
     def type_invalid_date(self):
         self.wait.until(EC.element_to_be_clickable(self.REPORT_NAME_INPUT2)).send_keys("gdfsghsdfghdsfghdfsg")
 
+    @allure.step("Enter search text: pedr")
     def type_ped(self):
         self.wait.until(EC.element_to_be_clickable(self.REPORT_NAME_INPUT2)).send_keys("pedr")
 
+    @allure.step("Select hint from autocomplete dropdown")
     def click_on_hint_in_the_field(self):
         self.wait.until(EC.element_to_be_clickable(self.HINT_FROM_INPUT)).click()
 
+    @allure.step("Click button: Search")
     def click_on_search_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
 
+    @allure.step("Assert: searched report is 'pedro' in table")
     def is_searched_report(self):
         x = self.wait.until(EC.visibility_of_element_located(self.TABLE_ROW)).text
         assert x == "pedro"
 
+    @allure.step("Assert: new report title is 'pedro'")
     def is_appeared_new_report(self):
         report = self.wait.until(EC.element_to_be_clickable(self.TITTLE_H6)).text
         assert report == "pedro"
 
-
+    @allure.step("Assert: validation error 'Invalid' is displayed")
     def is_searched_invalid_report(self):
         x = self.wait.until(EC.visibility_of_element_located(self.SPAN_ERROR)).text
         assert x == "Invalid"
 
+    @allure.step("Assert: report is deleted successfully")
     def is_successfully_deleted_report(self):
         x = self.wait.until(EC.element_to_be_clickable(self.PUSH_NOTIFICATION)).text
         assert x == "Successfully Deleted"

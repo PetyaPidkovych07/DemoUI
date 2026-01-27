@@ -26,4 +26,11 @@ class LoginPage(BasePage):
     def click_on_submit_button(self):
         self.wait.until(EC.element_to_be_clickable(self.LOGIN_BTN)).click()
 
+    def auth_to_demo(self, username='Admin', password='admin123'):
+        self.wait.until(EC.element_to_be_clickable(self.USERNAME_INPUT)).send_keys(username)
+        self.wait.until(EC.element_to_be_clickable(self.PASSWORD_INPUT)).send_keys(password)
+        self.wait.until(EC.element_to_be_clickable(self.LOGIN_BTN)).click()
+
+
+
 
