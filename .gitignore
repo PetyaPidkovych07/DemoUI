@@ -3,3 +3,23 @@
 *.iml
 
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pytest
+.pytest_cache/
+
+# Virtual environment
+venv/
+.env/
+
+# PyCharm / IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
