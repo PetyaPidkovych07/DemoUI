@@ -3,6 +3,7 @@ from webbrowser import Chrome
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -11,6 +12,8 @@ def driver(request):
     driver = Chrome(ChromeDriverManager().install())
     request.cls.driver = driver
     yield driver
+
+
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -24,4 +27,6 @@ def driver(request):
     driver.maximize_window()
     request.cls.driver = driver
     yield driver
+
+
 

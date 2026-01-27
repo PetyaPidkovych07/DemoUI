@@ -1,3 +1,4 @@
+import allure
 from selenium.common import NoSuchElementException, TimeoutException
 
 from base.base_page import BasePage
@@ -43,42 +44,51 @@ class AdminNationalities(BasePage):
     ITEM_FROM_TABLE_WITH_PAGINATION = ("xpath", "//div[@class='oxd-table-card']//div[text()='Ukrainian']/../../div[1]")
     APPEAR_DEL_BTN = ("xpath", "//i[@class= 'oxd-icon bi-trash-fill oxd-button-icon']")
 
-
+    @allure.step("Click menu item: Admin")
     def click_on_admin_item(self):
         self.wait.until(EC.element_to_be_clickable(self.CHOOSE_ADMIN_FROM_MENU)).click()
 
+    @allure.step("Open submenu: Nationalities")
     def choose_on_nationalities_item(self):
         self.wait.until(EC.element_to_be_clickable(self.NATIONALITIES_BTN)).click()
 
+    @allure.step("Click button: Add")
     def click_on_add_item(self):
         self.wait.until(EC.element_to_be_clickable(self.ADD_BTN)).click()
 
+    @allure.step("Click button: Edit")
     def click_on_edit_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.EDIT_BTN)).click()
 
+    @allure.step("Click button: Delete")
     def click_on_delete_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.APPEAR_DEL_BTN)).click()
 
+    @allure.step("Confirm deletion (Yes, Delete)")
     def click_on_yes_confirm(self):
         self.wait.until(EC.element_to_be_clickable(self.YES_DELETE_ITEM)).click()
 
+    @allure.step("Type nationality name: 'bro'")
     def type_data(self):
         self.wait.until(EC.element_to_be_clickable(self.INPUT)).send_keys("bro")
 
+    @allure.step("Type nationality name: 'Ukraine'")
     def type_ukraine(self):
         self.wait.until(EC.element_to_be_clickable(self.INPUT)).send_keys("Ukraine")
 
+    @allure.step("Click button: Save")
     def click_on_save_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SAVE_BTN)).click()
 
-
+    @allure.step("Type nationality name: 'Kyiv'")
     def type_kyiv(self):
         self.wait.until(EC.element_to_be_clickable(self.INPUT)).send_keys("Kyiv")
 
+    @allure.step("Type nationality name: 'Portu'")
     def type_portu(self):
         self.wait.until(EC.element_to_be_clickable(self.INPUT)).send_keys("Portu")
 
-
+    @allure.step("Select row in table by value: 'Kyiv' (iterate pagination if needed)")
     def delete_kyiv_from_table(self):
         expected_client = "Kyiv"
         xpath_text1 = "//div[@class='oxd-table-card']//div[text()='" + expected_client + "']"
@@ -97,6 +107,7 @@ class AdminNationalities(BasePage):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollDown);")
         time.sleep(5)
 
+    @allure.step("Delete nationality 'Portu' from table and assert success notification")
     def is_deleted_porto(self):
         expected_client = "Portu"
         xpath_text1 = "//div[@class='oxd-table-card']//div[text()='" + expected_client + "']"
@@ -120,34 +131,40 @@ class AdminNationalities(BasePage):
         x = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION_DELETE)).text
         assert x == 'Successfully Deleted'
 
-
+    @allure.step("Assert success notification: 'Successfully Saved'")
     def is_saved_country(self):
         push_text = self.wait.until(EC.element_to_be_clickable(self.PUSH_NOTIFICATION_SUCCESSS)).text
         assert push_text == 'Successfully Saved'
 
+    @allure.step("Assert nationality was added successfully: 'Successfully Saved'")
     def is_added_porto(self):
         push_text = self.wait.until(EC.element_to_be_clickable(self.PUSH_NOTIFICATION_SUCCESSS)).text
         assert push_text == 'Successfully Saved'
 
+    @allure.step("Assert validation error: 'Already exists'")
     def is_showed_error(self):
         text = self.wait.until(EC.visibility_of_element_located(self.ERROR_EXSITS)).text
         assert text == 'Already exists'
 
+    @allure.step("Assert validation error: 'Required'")
     def is_empty_error(self):
         text = self.wait.until(EC.visibility_of_element_located(self.ERROR_REQUIRED)).text
         assert text == 'Required'
 
+    @allure.step("Assert update notification: 'Successfully Updated'")
     def is_changed_name(self):
         time.sleep(1)
         text = self.wait.until(EC.presence_of_element_located(self.PUSH_SUCCSESSFULLY_UPDATE)).text
         assert text == 'Successfully Updated'
 
+    @allure.step("Assert deletion notification: 'Successfully Deleted'")
     def is_deleted_country(self):
         text = self.wait.until(EC.visibility_of_element_located(self.PUSH_NOTIFICATION_DELETE)).text
         assert text == "Successfully Deleted"
 
-
+    @allure.step("Compare all nationalities in table with expected reference list")
     def compare_all_countries_in_table(self):
+        global last_page
         try:
             tru = self.wait.until(EC.element_to_be_clickable(self.PAGINATION))
             time.sleep(3)

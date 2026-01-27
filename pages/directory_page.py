@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver import ActionChains
 
 from base.base_page import BasePage
@@ -24,7 +25,7 @@ class Directory(BasePage):
     SELECT_ITEM_CHIEF_EXECUTIVE_FROM_DROPDOWN = (
     "xpath", "//div[@role='listbox']//span[text()='Chief Executive Officer']")
     SELECT_ITEM_CHIEF_TECHNICAL_FROM_DROPDOWN = (
-    "xpath", "//div[@role='listbox']//span[text()='Chief Technical Officer']")
+    "xpath", "//div[@role='listbox']//span[text()='Chief Financial Officer']")
     SELECT_ITEM_CONTENT_SPECIALIST_FROM_DROPDOWN = (
     "xpath", "//div[@role='listbox']//span[text()='Content Specialist']")
     SELECT_ITEM_CONTENT_DATABASE_FROM_DROPDOWN = (
@@ -77,40 +78,70 @@ class Directory(BasePage):
     "xpath", "(//p[contains(@class, 'oxd-text oxd-text--p oxd-text--toast-title')][contains(text(), '')])[2]")
     PUSH_NOTIFICATION_NO_RECORDS = ("xpath", "//p[text()='No Records Found']")
 
+    RECORDS_FOUND = ("xpath", "//span[contains(., 'Record Found')]")
 
+    @allure.step("Open menu item: Directory")
     def click_on_directory_item(self):
         self.wait.until(EC.element_to_be_clickable(self.ITEM_DIRECTORY_FROM_MENU)).click()
 
+    @allure.step("Open Job Title dropdown")
     def click_on_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_JOB_TITTLE)).click()
 
+    @allure.step("Open Location dropdown")
     def click_on_location_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_LOCATION)).click()
 
+    @allure.step("Select Job Title: Software Engineer")
     def choose_item_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_SELECT_ITEM_FROM_JOB_TITTLE)).click()
 
+    @allure.step("Select Job Title: HR Manager")
     def choose_hr_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.SELECT_ITEM_HR_FORM_DROPDOWN)).click()
 
+    @allure.step("Select Job Title: Support Specialist")
     def choose_support_specialist_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.SELECT_ITEM_SUPPORT_SPESIALIST_FROM_DROPDOWN)).click()
 
+    @allure.step("Select Job Title: QA Engineer")
     def choose_qa_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.SELECT_ITEM_QA_FORM_DROPDOWN)).click()
 
+    @allure.step("Select Job Title from dropdown (default item)")
     def choose_job_title_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.DROPDOWN_SELECT_ITEM_FROM_JOB_TITTLE)).click()
 
+    @allure.step("Select Job Title: Chief Financial Officer")
     def choose_chief_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.SELECT_ITEM_CHIEF_TECHNICAL_FROM_DROPDOWN)).click()
 
+    @allure.step("Select Location: Texas R&D")
     def choose_all_location_from_dropdown(self):
         self.wait.until(EC.element_to_be_clickable(self.SELECT_ITEM_LOCATION_FORM_DROPDOWN)).click()
 
+    @allure.step("Click button: Search")
     def click_on_search_btn(self):
         self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
 
+    # @allure.step("Click button: Search")
+    # def click_on_search_btn(self):
+    #     # беремо текст ДО кліку (якщо елемент є)
+    #     before = None
+    #     try:
+    #         before = self.driver.find_element(*self.RECORDS_FOUND).text
+    #     except Exception:
+    #         pass
+    #
+    #     self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
+    #
+    #     # чекаємо, що лічильник результатів з'явиться/оновиться
+    #     if before:
+    #         self.wait.until(lambda d: d.find_element(*self.RECORDS_FOUND).text != before)
+    #     else:
+    #         self.wait.until(EC.visibility_of_element_located(self.RECORDS_FOUND))
+
+    @allure.step("Assert: 'No Records Found' message is displayed")
     def is_no_records(self):
         text = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION_NO_RECORDS)).text
         assert text == 'No Records Found'

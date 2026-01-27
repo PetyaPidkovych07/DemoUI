@@ -10,14 +10,12 @@ class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 14, poll_frequency=1)
+        self.wait = WebDriverWait(driver, 20, poll_frequency=1)
 
 
     def open(self):
         self.driver.get(self.PAGE_URL)
 
+
     def is_opened(self):
         self.wait.until(EC.url_to_be(self.PAGE_URL))
-
-
-
