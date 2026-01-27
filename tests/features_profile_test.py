@@ -14,8 +14,8 @@ class TestProfileFeatures(BaseTest):
         self.login_page.enter_password()
         self.login_page.click_on_submit_button()
 
-# @allure.feature("Nationalities")
-# class TestNationalities(BaseTest):
+@allure.feature("Nationalities")
+class TestNationalities(BaseTest):
 
 #     @allure.story("Scrape and compare all nationalities in table")
 #     @pytest.mark.smoke
@@ -53,49 +53,49 @@ class TestProfileFeatures(BaseTest):
     #         self.nationalities_page.is_saved_country()
 
 
-    # @allure.story("Create a new nationality entry")
-    # @pytest.mark.smoke
-    # def test_add_kyiv(self):
-    #     allure.dynamic.title("Add nationality: Kyiv")
+    @allure.story("Create a new nationality entry")
+    @pytest.mark.smoke
+    def test_add_kyiv(self):
+        allure.dynamic.title("Add nationality: Kyiv")
 
-    #     with allure.step("Login to OrangeHRM"):
-    #         self.login_page.open()
-    #         self.login_page.enter_login()
-    #         self.login_page.enter_password()
-    #         self.login_page.click_on_submit_button()
-    #     with allure.step("Navigate to Admin -> Nationalities"):
-    #         self.nationalities_page.click_on_admin_item()
-    #         self.nationalities_page.is_opened()
-    #         self.nationalities_page.choose_on_nationalities_item()
-    #     with allure.step("Add nationality 'Kyiv'"):
-    #         self.nationalities_page.click_on_add_item()
-    #         self.nationalities_page.type_kyiv()
-    #         self.nationalities_page.click_on_save_btn()
-    #     with allure.step("Verify nationality saved successfully"):
-    #         self.nationalities_page.is_saved_country()
+        with allure.step("Login to OrangeHRM"):
+            self.login_page.open()
+            self.login_page.enter_login()
+            self.login_page.enter_password()
+            self.login_page.click_on_submit_button()
+        with allure.step("Navigate to Admin -> Nationalities"):
+            self.nationalities_page.click_on_admin_item()
+            self.nationalities_page.is_opened()
+            self.nationalities_page.choose_on_nationalities_item()
+        with allure.step("Add nationality 'Kyiv'"):
+            self.nationalities_page.click_on_add_item()
+            self.nationalities_page.type_kyiv()
+            self.nationalities_page.click_on_save_btn()
+        with allure.step("Verify nationality saved successfully"):
+            self.nationalities_page.is_saved_country()
 
 
-    # @allure.story("Delete nationality from table")
-    # @pytest.mark.smoke
-    # def test_delete_kyiv_from_table(self):
-    #     allure.dynamic.title("Delete nationality: Kyiv")
+    @allure.story("Delete nationality from table")
+    @pytest.mark.smoke
+    def test_delete_kyiv_from_table(self):
+        allure.dynamic.title("Delete nationality: Kyiv")
 
-    #     with allure.step("Login to OrangeHRM"):
-    #         self.login_page.open()
-    #         self.login_page.enter_login()
-    #         self.login_page.enter_password()
-    #         self.login_page.click_on_submit_button()
-    #     with allure.step("Navigate to Admin -> Nationalities"):
-    #         self.nationalities_page.click_on_admin_item()
-    #         self.nationalities_page.is_opened()
-    #         self.nationalities_page.choose_on_nationalities_item()
-    #     with allure.step("Select nationality 'Kyiv' from table"):
-    #         self.nationalities_page.delete_kyiv_from_table()
-    #     with allure.step("Delete selected nationality and confirm"):
-    #         self.nationalities_page.click_on_delete_btn()
-    #         self.nationalities_page.click_on_yes_confirm()
-    #     with allure.step("Verify nationality deleted successfully"):
-    #         self.nationalities_page.is_deleted_country()
+        with allure.step("Login to OrangeHRM"):
+            self.login_page.open()
+            self.login_page.enter_login()
+            self.login_page.enter_password()
+            self.login_page.click_on_submit_button()
+        with allure.step("Navigate to Admin -> Nationalities"):
+            self.nationalities_page.click_on_admin_item()
+            self.nationalities_page.is_opened()
+            self.nationalities_page.choose_on_nationalities_item()
+        with allure.step("Select nationality 'Kyiv' from table"):
+            self.nationalities_page.delete_kyiv_from_table()
+        with allure.step("Delete selected nationality and confirm"):
+            self.nationalities_page.click_on_delete_btn()
+            self.nationalities_page.click_on_yes_confirm()
+        with allure.step("Verify nationality deleted successfully"):
+            self.nationalities_page.is_deleted_country()
 
 
     # @allure.story("Add new nationality")
