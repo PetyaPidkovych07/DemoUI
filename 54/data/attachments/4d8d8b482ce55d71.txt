@@ -1,2 +1,0 @@
-['Vacancy']
-['Vacancy', 'Sales Representative', 'Sales Representative', 'Sales Representative', 'Sales Representative']
