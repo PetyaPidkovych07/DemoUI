@@ -1,1 +1,0 @@
-['Vacancy', 'Senior Support Specialist', 'Senior QA Lead', 'Sales Representative']
