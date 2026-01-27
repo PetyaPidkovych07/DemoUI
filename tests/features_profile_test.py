@@ -206,7 +206,7 @@ class TestNationalities(BaseTest):
 @allure.feature("Directory")
 class TestDirectory(BaseTest):
 
-<<<<<<< HEAD
+
     def test_is_display_employee_after_filters(self):
         self.login_page.open()
         self.login_page.enter_login()
@@ -230,9 +230,7 @@ class TestDirectory(BaseTest):
         self.directory_page.choose_hr_from_dropdown()
         self.directory_page.click_on_search_btn()
         self.directory_page.is_present_hr_in_table()
-=======
 
->>>>>>> fbb1257 (Refactor tests: add Allure feature/story and improve sorting validation)
 
 
     @allure.story("Filters: Job Title")
@@ -335,7 +333,7 @@ class TestDirectory(BaseTest):
     #     self.directory_page.is_present_chief_technical_in_table()
 
 
-<<<<<<< HEAD
+
     def test_all_locations_are_presented_in_dropdown(self):
         self.login_page.open()
         self.login_page.enter_login()
@@ -361,7 +359,7 @@ class TestDirectory(BaseTest):
         self.directory_page.click_on_search_btn()
         self.directory_page.is_each_user_have_email()
 
-=======
+
     # def test_all_locations_are_presented_in_dropdown(self):
     #     self.login_page.open()
     #     self.login_page.enter_login()
@@ -386,7 +384,7 @@ class TestDirectory(BaseTest):
     #     self.directory_page.choose_job_title_from_dropdown()
     #     self.directory_page.click_on_search_btn()
     #     self.directory_page.is_each_user_have_email()
->>>>>>> fbb1257 (Refactor tests: add Allure feature/story and improve sorting validation)
+
 
 
 @allure.feature("PIM Reports")
@@ -574,7 +572,6 @@ class TestVacancies(BaseTest):
     @allure.story("Validation: vacancy already exists")
     @pytest.mark.smoke
     def test_vacancy_existed(self):
-<<<<<<< HEAD
         self.login_page.open()
         self.login_page.enter_login()
         self.login_page.enter_password()
@@ -620,7 +617,7 @@ class TestVacancies(BaseTest):
         self.vacancies_page.choose_sales_from_dropdown()
         self.vacancies_page.click_on_search_btn()
         self.vacancies_page.is_displayed_sales_in_table()
-=======
+
         # --- GIVEN ---
         with allure.step("Login to OrangeHRM"):
             self.login_page.open()
@@ -706,7 +703,7 @@ class TestVacancies(BaseTest):
         # self.vacancies_page.choose_engineer_from_dropdown()
         # self.vacancies_page.click_on_search_btn()
         # self.vacancies_page.is_displayed_engineer_in_table()
->>>>>>> fbb1257 (Refactor tests: add Allure feature/story and improve sorting validation)
+
 
 
     # def test_display_sales_in_table_after_chosen_dropdown(self):
@@ -720,7 +717,6 @@ class TestVacancies(BaseTest):
     #     self.vacancies_page.choose_sales_from_dropdown()
     #     self.vacancies_page.click_on_search_btn()
     #     self.vacancies_page.is_displayed_sales_in_table()
-#
 @allure.feature("Recruitment Candidates")
 class TestRecruitmentCandidate(BaseTest):
     @allure.story("Create a candidate profile")

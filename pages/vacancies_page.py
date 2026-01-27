@@ -170,8 +170,7 @@ class Vacancies(BasePage):
 
         assert len(job_title) == 1
         assert list == job_title
-<<<<<<< HEAD
-=======
+
 
     @allure.step("Assert: table Job Titles equal expected: {expected_job_titles}")
     def is_displayed_job_titles_in_table(self, expected_job_titles: list, max_pages: int = 5):
@@ -244,4 +243,4 @@ class Vacancies(BasePage):
             f"Expected: {expected_job_titles}\n"
             f"Actual:   {job_title}"
         )
->>>>>>> fbb1257 (Refactor tests: add Allure feature/story and improve sorting validation)
+
