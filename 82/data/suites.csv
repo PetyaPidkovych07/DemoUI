@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","11155","test_with_valid_crendentional","tests","Wed Jan 28 09:44:59 UTC 2026","passed","Wed Jan 28 09:45:10 UTC 2026","TestProfileFeatures","features_profile_test","",""
+"","64042","Delete nationality: Kyiv","tests","Wed Jan 28 09:46:04 UTC 2026","broken","Wed Jan 28 09:47:08 UTC 2026","TestNationalities","features_profile_test","",""
+"","52353","Add nationality: Kyiv","tests","Wed Jan 28 09:45:11 UTC 2026","broken","Wed Jan 28 09:46:03 UTC 2026","TestNationalities","features_profile_test","",""
