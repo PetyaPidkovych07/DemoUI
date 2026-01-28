@@ -30,6 +30,8 @@ def driver(request):
     driver.maximize_window()
     request.cls.driver = driver
     yield driver
+    driver.quit()
+
 
 
 
