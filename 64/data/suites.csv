@@ -1,3 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","26315","test_scraping_all_countries_in_table","tests","Tue Jan 27 18:07:59 UTC 2026","broken","Tue Jan 27 18:08:25 UTC 2026","TestNationalities","features_profile_test","",""
-"","3661","test_with_valid_crendentional","tests","Tue Jan 27 18:07:55 UTC 2026","passed","Tue Jan 27 18:07:59 UTC 2026","TestProfileFeatures","features_profile_test","",""

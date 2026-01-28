@@ -1,1 +1,0 @@
-[{"uid":"61fb8134a0cb2dd","name":"test_scraping_all_countries_in_table","time":{"start":1769537279542,"stop":1769537305857,"duration":26315},"status":"broken","severity":"normal"},{"uid":"f5a8ed3ba986c5c5","name":"test_with_valid_crendentional","time":{"start":1769537275599,"stop":1769537279260,"duration":3661},"status":"passed","severity":"normal"}]
