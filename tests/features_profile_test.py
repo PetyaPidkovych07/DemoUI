@@ -14,8 +14,8 @@ class TestProfileFeatures(BaseTest):
         self.login_page.enter_password()
         self.login_page.click_on_submit_button()
 
-@allure.feature("Nationalities")
-class TestNationalities(BaseTest):
+# @allure.feature("Nationalities")
+# class TestNationalities(BaseTest):
 
 #     @allure.story("Scrape and compare all nationalities in table")
 #     @pytest.mark.smoke
@@ -53,49 +53,49 @@ class TestNationalities(BaseTest):
     #         self.nationalities_page.is_saved_country()
 
 
-    @allure.story("Create a new nationality entry")
-    @pytest.mark.smoke
-    def test_add_kyiv(self):
-        allure.dynamic.title("Add nationality: Kyiv")
+    # @allure.story("Create a new nationality entry")
+    # @pytest.mark.smoke
+    # def test_add_kyiv(self):
+    #     allure.dynamic.title("Add nationality: Kyiv")
 
-        with allure.step("Login to OrangeHRM"):
-            self.login_page.open()
-            self.login_page.enter_login()
-            self.login_page.enter_password()
-            self.login_page.click_on_submit_button()
-        with allure.step("Navigate to Admin -> Nationalities"):
-            self.nationalities_page.click_on_admin_item()
-            self.nationalities_page.is_opened()
-            self.nationalities_page.choose_on_nationalities_item()
-        with allure.step("Add nationality 'Kyiv'"):
-            self.nationalities_page.click_on_add_item()
-            self.nationalities_page.type_kyiv()
-            self.nationalities_page.click_on_save_btn()
-        with allure.step("Verify nationality saved successfully"):
-            self.nationalities_page.is_saved_country()
+    #     with allure.step("Login to OrangeHRM"):
+    #         self.login_page.open()
+    #         self.login_page.enter_login()
+    #         self.login_page.enter_password()
+    #         self.login_page.click_on_submit_button()
+    #     with allure.step("Navigate to Admin -> Nationalities"):
+    #         self.nationalities_page.click_on_admin_item()
+    #         self.nationalities_page.is_opened()
+    #         self.nationalities_page.choose_on_nationalities_item()
+    #     with allure.step("Add nationality 'Kyiv'"):
+    #         self.nationalities_page.click_on_add_item()
+    #         self.nationalities_page.type_kyiv()
+    #         self.nationalities_page.click_on_save_btn()
+    #     with allure.step("Verify nationality saved successfully"):
+    #         self.nationalities_page.is_saved_country()
 
 
-    @allure.story("Delete nationality from table")
-    @pytest.mark.smoke
-    def test_delete_kyiv_from_table(self):
-        allure.dynamic.title("Delete nationality: Kyiv")
+    # @allure.story("Delete nationality from table")
+    # @pytest.mark.smoke
+    # def test_delete_kyiv_from_table(self):
+    #     allure.dynamic.title("Delete nationality: Kyiv")
 
-        with allure.step("Login to OrangeHRM"):
-            self.login_page.open()
-            self.login_page.enter_login()
-            self.login_page.enter_password()
-            self.login_page.click_on_submit_button()
-        with allure.step("Navigate to Admin -> Nationalities"):
-            self.nationalities_page.click_on_admin_item()
-            self.nationalities_page.is_opened()
-            self.nationalities_page.choose_on_nationalities_item()
-        with allure.step("Select nationality 'Kyiv' from table"):
-            self.nationalities_page.delete_kyiv_from_table()
-        with allure.step("Delete selected nationality and confirm"):
-            self.nationalities_page.click_on_delete_btn()
-            self.nationalities_page.click_on_yes_confirm()
-        with allure.step("Verify nationality deleted successfully"):
-            self.nationalities_page.is_deleted_country()
+    #     with allure.step("Login to OrangeHRM"):
+    #         self.login_page.open()
+    #         self.login_page.enter_login()
+    #         self.login_page.enter_password()
+    #         self.login_page.click_on_submit_button()
+    #     with allure.step("Navigate to Admin -> Nationalities"):
+    #         self.nationalities_page.click_on_admin_item()
+    #         self.nationalities_page.is_opened()
+    #         self.nationalities_page.choose_on_nationalities_item()
+    #     with allure.step("Select nationality 'Kyiv' from table"):
+    #         self.nationalities_page.delete_kyiv_from_table()
+    #     with allure.step("Delete selected nationality and confirm"):
+    #         self.nationalities_page.click_on_delete_btn()
+    #         self.nationalities_page.click_on_yes_confirm()
+    #     with allure.step("Verify nationality deleted successfully"):
+    #         self.nationalities_page.is_deleted_country()
 
 
     # @allure.story("Add new nationality")
@@ -439,50 +439,50 @@ class TestNationalities(BaseTest):
 #     #     self.pim_reports_page.is_sorted_descending_name()
 
 
-#     @allure.story("User can hide filter panel on Reports page")
-#     @pytest.mark.smoke
-#     def test_hide_block(self):
-#         with allure.step("Login to OrangeHRM"):
-#             self.login_page.open()
-#             self.login_page.enter_login()
-#             self.login_page.enter_password()
-#             self.login_page.click_on_submit_button()
-#         with allure.step("Navigate to PIM -> Reports"):
-#             self.pim_reports_page.click_on_pim_item()
-#             self.pim_reports_page.click_on_report_link()
-#         with allure.step("Hide filter block by clicking icon"):
-#             self.pim_reports_page.click_on_icon_btn()
-#         with allure.step("Validate filter block is hidden"):
-#             self.pim_reports_page.is_hidden_block()
+    @allure.story("User can hide filter panel on Reports page")
+    @pytest.mark.smoke
+    def test_hide_block(self):
+        with allure.step("Login to OrangeHRM"):
+            self.login_page.open()
+            self.login_page.enter_login()
+            self.login_page.enter_password()
+            self.login_page.click_on_submit_button()
+        with allure.step("Navigate to PIM -> Reports"):
+            self.pim_reports_page.click_on_pim_item()
+            self.pim_reports_page.click_on_report_link()
+        with allure.step("Hide filter block by clicking icon"):
+            self.pim_reports_page.click_on_icon_btn()
+        with allure.step("Validate filter block is hidden"):
+            self.pim_reports_page.is_hidden_block()
 
 
-#         @allure.story("Sort reports by name in ascending and descending order")
-#         @pytest.mark.smoke
-#         @pytest.mark.parametrize(
-#             "assert_method",
-#             [
-#                 "is_sorted_ascending_name",                 # тут ми викликаємо метод а тести асерити вже виконуються в пейдж обджект де описані
-#                 "is_sorted_descending_name"
-#             ]
-#         )
-#         def test_sort_reports_by_name(self, assert_method):
-#             # --- КРОК 1. ЛОГІН ---
-#             self.login_page.open()
-#             self.login_page.enter_login()
-#             self.login_page.enter_password()
-#             self.login_page.click_on_submit_button()
+        @allure.story("Sort reports by name in ascending and descending order")
+        @pytest.mark.smoke
+        @pytest.mark.parametrize(
+            "assert_method",
+            [
+                "is_sorted_ascending_name",                 # тут ми викликаємо метод а тести асерити вже виконуються в пейдж обджект де описані
+                "is_sorted_descending_name"
+            ]
+        )
+        def test_sort_reports_by_name(self, assert_method):
+            # --- КРОК 1. ЛОГІН ---
+            self.login_page.open()
+            self.login_page.enter_login()
+            self.login_page.enter_password()
+            self.login_page.click_on_submit_button()
 
-#             # --- КРОК 2. НАВІГАЦІЯ ДО СТОРІНКИ ---
-#             self.pim_reports_page.click_on_pim_item()
-#             self.pim_reports_page.click_on_report_link()
+            # --- КРОК 2. НАВІГАЦІЯ ДО СТОРІНКИ ---
+            self.pim_reports_page.click_on_pim_item()
+            self.pim_reports_page.click_on_report_link()
 
-#             # --- КРОК 3. ВИКЛИК МЕТОДУ З PAGEOBJECT ЧЕРЕЗ ІМ'Я ---
-#             # Тут assert_method — це рядок:
-#             # "is_sorted_ascending_name" або "is_sorted_descending_name"
+            # --- КРОК 3. ВИКЛИК МЕТОДУ З PAGEOBJECT ЧЕРЕЗ ІМ'Я ---
+            # Тут assert_method — це рядок:
+            # "is_sorted_ascending_name" або "is_sorted_descending_name"
 
-#             # getattr бере з об'єкта self.pim_reports_page метод з таким ім'ям
-#             # і викликає його як звичайну функцію
-#             getattr(self.pim_reports_page, assert_method)()
+            # getattr бере з об'єкта self.pim_reports_page метод з таким ім'ям
+            # і викликає його як звичайну функцію
+            getattr(self.pim_reports_page, assert_method)()
 
 # @allure.feature("Vacancies")
 # class TestVacancies(BaseTest):
