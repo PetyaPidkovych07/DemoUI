@@ -50,27 +50,27 @@ class AdminNationalities(BasePage):
 
     @allure.step("Open submenu: Nationalities")
     def choose_on_nationalities_item(self):
-        self.wait.until(EC.visibility_of_element_located(self.NATIONALITIES_BTN)).click()
+        self.wait.until(EC.element_to_be_clickable(self.NATIONALITIES_BTN)).click()
 
     @allure.step("Click button: Add")
     def click_on_add_item(self):
-        self.wait.until(EC.visibility_of_element_located(self.ADD_BTN)).click()
+        self.wait.until(EC.element_to_be_clickable(self.ADD_BTN)).click()
 
     @allure.step("Click button: Edit")
     def click_on_edit_btn(self):
-        self.wait.until(EC.visibility_of_element_located(self.EDIT_BTN)).click()
+        self.wait.until(EC.element_to_be_clickable(self.EDIT_BTN)).click()
 
     @allure.step("Click button: Delete")
     def click_on_delete_btn(self):
-        self.wait.until(EC.visibility_of_element_located(self.APPEAR_DEL_BTN)).click()
+        self.wait.until(EC.element_to_be_clickable(self.APPEAR_DEL_BTN)).click()
 
     @allure.step("Confirm deletion (Yes, Delete)")
     def click_on_yes_confirm(self):
-        self.wait.until(EC.visibility_of_element_located(self.YES_DELETE_ITEM)).click()
+        self.wait.until(EC.element_to_be_clickable(self.YES_DELETE_ITEM)).click()
 
     @allure.step("Type nationality name: 'bro'")
     def type_data(self):
-        self.wait.until(EC.visibility_of_element_located(self.INPUT)).send_keys("bro")
+        self.wait.until(EC.element_to_be_clickable(self.INPUT)).send_keys("bro")
 
     @allure.step("Type nationality name: 'Ukraine'")
     def type_ukraine(self):
