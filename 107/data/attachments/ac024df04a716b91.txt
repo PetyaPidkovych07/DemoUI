@@ -1,0 +1,3 @@
+Expected job titles: ['Sales Representative']
+Users (vacancy col): ['Sales Representative']
+Actual job titles: ['Sales Representative']

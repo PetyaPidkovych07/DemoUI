@@ -1,0 +1,3 @@
+Expected job titles: ['Software Engineer']
+Users (vacancy col): ['Software Engineer']
+Actual job titles: ['Software Engineer']
