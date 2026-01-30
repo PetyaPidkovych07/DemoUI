@@ -434,7 +434,9 @@ class TestPimReports(BaseTest):
             self.login_page.click_on_submit_button()
         with allure.step("Navigate to PIM -> Reports"):
             self.pim_reports_page.click_on_pim_item()
+            self.pim_reports_page.is_opened()
             self.pim_reports_page.click_on_report_link()
+            self.pim_reports_page.is_current_page()
         with allure.step("Search report with invalid value"):
             self.pim_reports_page.type_invalid_date()
             self.pim_reports_page.click_on_search_btn()

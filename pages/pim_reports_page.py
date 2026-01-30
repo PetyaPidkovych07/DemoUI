@@ -12,6 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class PimReports(BasePage):
 
     PAGE_URL = Links.PIM_REPORTS
+    PAGE_URL = Links.GENERAL_PIM
 
     PIM_ITEM_FROM_MENU = ("xpath", "//span[text()='PIM']")
     ITEM_LINK = ("xpath", "//a[text()='Reports']")
@@ -37,6 +38,15 @@ class PimReports(BasePage):
     SORT_CHOOSE_ITEM_NAME_AS = ("xpath", "(//span[text()='Ascending'])[1]")
     SORT_CHOOSE_ITEM_NAME_DES = ("xpath", "(//span[text()='Descending'])[1]")
     NAME_COLUMN = ("xpath", "//div[@class='oxd-table-cell oxd-padding-cell'][@style='flex: 1 1 85%;']")
+
+    def is_opened(self):
+        self.wait.until(EC.url_contains("/pim/viewEmployeeList"))
+
+    def is_current_page(self):
+        self.wait.until(EC.url_contains("/pim/viewDefinedPredefinedReports")
+    )
+
+
 
     @allure.step("Click menu: PIM")
     def click_on_pim_item(self):

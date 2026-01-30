@@ -14,6 +14,8 @@ class Links:
 
     DIRECTORY = f"{HOST}/directory/viewDirectory"
 
+    GENERAL_PIM = f"{HOST}/pim/viewEmployeeList"
+
     PIM_REPORTS = f"{HOST}/pim/viewDefinedPredefinedReports"
 
     RECRUITMENT_VACANCIES = f"{HOST}/recruitment/viewJobVacancy"
