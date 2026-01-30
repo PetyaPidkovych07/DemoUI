@@ -2,6 +2,7 @@
 .idea
 *.iml
 
+<<<<<<< HEAD
 
 # Python
 __pycache__/
@@ -23,3 +24,33 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+=======
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Test artifacts
+allure-results/
+allure-report/
+screenshots/
+reports/
+
+# IDE & OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Secrets & logs
+.env
+*.log
+*.pid
+
+>>>>>>> 7f3249c14484fbfba8ccca2bdda2764cb6687ebf
