@@ -43,10 +43,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Clean workspace
-        run: |
-            find . -type d -name "__pycache__" -exec rm -r {} +
-            rm -rf .pytest_cache
+#      - name: Clean workspace
+#        run: |
+#            find . -type d -name "__pycache__" -exec rm -r {} +
+#            rm -rf .pytest_cache
 
 
       - name: Run tests
