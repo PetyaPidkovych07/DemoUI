@@ -21,7 +21,7 @@ class PimReports(BasePage):
     CHOOSE_ITEM_FROM_DROPDOWN = ("xpath", "//div[@role='listbox']//span[text()='Contact Details']")
     ICON_PLUS = ("xpath", "(//button[@class='oxd-icon-button orangehrm-report-icon'])[2]")
     SAVE_BTN = ("xpath", "//button[text()=' Save ']")
-    TITTLE_H6 = ("xpath", "//div[text()='pedro']")
+    TITTLE_H6 = ("xpath", "//h6[text()='pedro']")
     REPORT_NAME_INPUT2 = ("xpath", "//input[@placeholder='Type for hints...']")
     SEARCH_BTN = ("xpath", "//button[text()=' Search ']")
     HINT_FROM_INPUT = ("xpath", "//div[@role='listbox']//span[text()='pedro']")
