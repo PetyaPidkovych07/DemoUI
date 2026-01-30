@@ -502,6 +502,7 @@ class Recruitment_Candidate(BasePage):
             yr = self.driver.find_element(*self.CURRENT_YEAR).text
             mon = self.driver.find_element(*self.CURRENT_MONTH).text
 
+
             if yr == year and mon == month:
                 break;
             else:
@@ -541,14 +542,67 @@ class Recruitment_Candidate(BasePage):
                 break
         self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
         time.sleep(2)
-        blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
-        assert blur == 'No Records Found'
+        vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
+        size_list = []
+        for size in vacancy_column:
+            size_list.append(size.text)
+
+        y = ['Vacancy', 'Sales Representative']
+        print(y)
+        assert y == size_list
+    # def are_fonded_valid_date_via_calendar(self, year="2022", month="July", day="15"):
+    #     while True:
+    #         yr = self.driver.find_element(*self.CURRENT_YEAR).text
+    #         mon = self.driver.find_element(*self.CURRENT_MONTH).text
+    #
+    #         if yr == year and mon == month:
+    #             break;
+    #         else:
+    #             self.driver.find_element(*self.PREVIOUS_BTN_IN_CALENDAR).click()
+    #     time.sleep(3)
+    #
+    #     dates = self.driver.find_elements(*self.CHOOSE_DATE)
+    #     time.sleep(3)
+    #     for ele in dates:
+    #         if ele.text == day:
+    #             ele.click()
+    #             break
+    #     time.sleep(3)
+    #
+    #     self.wait.until(EC.element_to_be_clickable(self.ICON_TO_CALENDAR)).click()
+    #
+    #     year = "2022"
+    #     month = "July"
+    #     day = "28"
+    #
+    #     time.sleep(5)
+    #     while True:
+    #         yr = self.driver.find_element(*self.CURRENT_YEAR).text
+    #         mon = self.driver.find_element(*self.CURRENT_MONTH).text
+    #
+    #         if yr == year and mon == month:
+    #             break;
+    #         else:
+    #             self.driver.find_element(*self.PREVIOUS_BTN_IN_CALENDAR).click()
+    #     time.sleep(3)
+    #
+    #     dates = self.driver.find_elements(*self.CHOOSE_DATE)
+    #     time.sleep(3)
+    #     for ele in dates:
+    #         if ele.text == day:
+    #             ele.click()
+    #             break
+    #     self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
+    #     time.sleep(2)
+    #     blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
+    #     assert blur == 'No Records Found'
 
     @allure.step("Filter vacancies for July 2022 via calendar")
     def are_fonded_july_2022_via_calendar(self, year="2022", month="July", day="12"):
         while True:
             yr = self.driver.find_element(*self.CURRENT_YEAR).text
             mon = self.driver.find_element(*self.CURRENT_MONTH).text
+
 
             if yr == year and mon == month:
                 break;
@@ -589,54 +643,106 @@ class Recruitment_Candidate(BasePage):
                 break
         self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
         time.sleep(2)
-        blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
-        assert blur == 'No Records Found'
+        vacancy_column = self.wait.until(EC.presence_of_all_elements_located(self.VACANCY_COLUMN))
+        size_list = []
+        for size in vacancy_column:
+            size_list.append(size.text)
 
-    @allure.step("Filter vacancies for July 11 via calendar")
-    def are_fonded_july_11_via_calendar(self, year="2022", month="July", day="8"):
-        while True:
-            yr = self.driver.find_element(*self.CURRENT_YEAR).text
-            mon = self.driver.find_element(*self.CURRENT_MONTH).text
-
-            if yr == year and mon == month:
-                break;
-            else:
-                self.driver.find_element(*self.PREVIOUS_BTN_IN_CALENDAR).click()
-        time.sleep(3)
-
-        dates = self.driver.find_elements(*self.CHOOSE_DATE)
-        time.sleep(3)
-        for ele in dates:
-            if ele.text == day:
-                ele.click()
-                break
-        time.sleep(3)
-
-        self.wait.until(EC.element_to_be_clickable(self.ICON_TO_CALENDAR)).click()
-
-        year = "2022"
-        month = "July"
-        day = "11"
-
-        time.sleep(5)
-        while True:
-            yr = self.driver.find_element(*self.CURRENT_YEAR).text
-            mon = self.driver.find_element(*self.CURRENT_MONTH).text
-
-            if yr == year and mon == month:
-                break;
-            else:
-                self.driver.find_element(*self.PREVIOUS_BTN_IN_CALENDAR).click()
-        time.sleep(3)
-
-        dates = self.driver.find_elements(*self.CHOOSE_DATE)
-        time.sleep(3)
-        for ele in dates:
-            if ele.text == day:
-                ele.click()
-                break
-        blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
-        assert blur == 'No Records Found'
+        y = ['Vacancy', 'Software Engineer']
+        print(y)
+        assert y == size_list
+    # def are_fonded_july_2022_via_calendar(self, year="2022", month="July", day="12"):
+    #     while True:
+    #         yr = self.driver.find_element(*self.CURRENT_YEAR).text
+    #         mon = self.driver.find_element(*self.CURRENT_MONTH).text
+    #
+    #         if yr == year and mon == month:
+    #             break;
+    #         else:
+    #             self.driver.find_element(*self.PREVIOUS_BTN_IN_CALENDAR).click()
+    #     time.sleep(3)
+    #
+    #     dates = self.driver.find_elements(*self.CHOOSE_DATE)
+    #     time.sleep(3)
+    #     for ele in dates:
+    #         if ele.text == day:
+    #             ele.click()
+    #             break
+    #     time.sleep(3)
+    #
+    #     self.wait.until(EC.element_to_be_clickable(self.ICON_TO_CALENDAR)).click()
+    #
+    #     year = "2022"
+    #     month = "July"
+    #     day = "14"
+    #
+    #     time.sleep(5)
+    #     while True:
+    #         yr = self.driver.find_element(*self.CURRENT_YEAR).text
+    #         mon = self.driver.find_element(*self.CURRENT_MONTH).text
+    #
+    #         if yr == year and mon == month:
+    #             break;
+    #         else:
+    #             self.driver.find_element(*self.PREVIOUS_BTN_IN_CALENDAR).click()
+    #     time.sleep(3)
+    #
+    #     dates = self.driver.find_elements(*self.CHOOSE_DATE)
+    #     time.sleep(3)
+    #     for ele in dates:
+    #         if ele.text == day:
+    #             ele.click()
+    #             break
+    #     self.wait.until(EC.element_to_be_clickable(self.SEARCH_BTN)).click()
+    #     time.sleep(2)
+    #     blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
+    #     assert blur == 'No Records Found'
+    #
+    # @allure.step("Filter vacancies for July 11 via calendar")
+    # def are_fonded_july_11_via_calendar(self, year="2022", month="July", day="8"):
+    #     while True:
+    #         yr = self.driver.find_element(*self.CURRENT_YEAR).text
+    #         mon = self.driver.find_element(*self.CURRENT_MONTH).text
+    #
+    #         if yr == year and mon == month:
+    #             break;
+    #         else:
+    #             self.driver.find_element(*self.PREVIOUS_BTN_IN_CALENDAR).click()
+    #     time.sleep(3)
+    #
+    #     dates = self.driver.find_elements(*self.CHOOSE_DATE)
+    #     time.sleep(3)
+    #     for ele in dates:
+    #         if ele.text == day:
+    #             ele.click()
+    #             break
+    #     time.sleep(3)
+    #
+    #     self.wait.until(EC.element_to_be_clickable(self.ICON_TO_CALENDAR)).click()
+    #
+    #     year = "2022"
+    #     month = "July"
+    #     day = "11"
+    #
+    #     time.sleep(5)
+    #     while True:
+    #         yr = self.driver.find_element(*self.CURRENT_YEAR).text
+    #         mon = self.driver.find_element(*self.CURRENT_MONTH).text
+    #
+    #         if yr == year and mon == month:
+    #             break;
+    #         else:
+    #             self.driver.find_element(*self.PREVIOUS_BTN_IN_CALENDAR).click()
+    #     time.sleep(3)
+    #
+    #     dates = self.driver.find_elements(*self.CHOOSE_DATE)
+    #     time.sleep(3)
+    #     for ele in dates:
+    #         if ele.text == day:
+    #             ele.click()
+    #             break
+    #     blur = self.wait.until(EC.presence_of_element_located(self.PUSH_NOTIFICATION)).text
+    #     assert blur == 'No Records Found'
 
     @allure.step("Validate no records found for invalid date range")
     def are_fonded_invalid_data_via_calendar(self, year="2018", month="July", day="9"):

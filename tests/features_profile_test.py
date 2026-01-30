@@ -1015,7 +1015,7 @@ class TestRecruitmentCandidate(BaseTest):
 
     @allure.story("Search candidates by date range via calendar")
     @pytest.mark.smoke
-    def test_search_for_valid_data_via_calendar(self):
+    def test_are_fonded_valid_date_via_calendar(self):
         with allure.step("Login to OrangeHRM"):
             self.login_page.open()
             self.login_page.enter_login()
