@@ -10,7 +10,7 @@ class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 20, poll_frequency=1)
+        self.wait = WebDriverWait(driver, 30, poll_frequency=0.2)
 
 
     def open(self):
