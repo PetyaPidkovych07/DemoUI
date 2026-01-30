@@ -10,7 +10,6 @@ on:
 jobs:
   linter:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,13 +20,11 @@ jobs:
           python-version: '3.11'
 
       - name: Upgrade pip
-        run: |
-          python -m pip install --upgrade pip
+        run: python -m pip install --upgrade pip
 
   autotests:
     needs: linter
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -37,10 +34,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Chrome
+      - name: Install Chrome and Chromedriver
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser
+          sudo apt-get install -y chromium-browser chromium-chromedriver
 
       - name: Install dependencies
         run: |
@@ -53,8 +50,7 @@ jobs:
           rm -rf .pytest_cache
 
       - name: Run tests
-        run: |
-          python -m pytest --alluredir=allure-results
+        run: python -m pytest --alluredir=allure-results
         continue-on-error: true
 
       - name: Get Allure history
@@ -79,6 +75,88 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+
+#name: UI Tests
+#
+#on:
+#  workflow_dispatch
+#  # Якщо треба запускати на пуш у main:
+#  # push:
+#  #   branches:
+#  #     - main
+#
+#jobs:
+#  linter:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: Set up Python 3.11
+#        uses: actions/setup-python@v5
+#        with:
+#          python-version: '3.11'
+#
+#      - name: Upgrade pip
+#        run: |
+#          python -m pip install --upgrade pip
+#
+#  autotests:
+#    needs: linter
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: Set up Python 3.11
+#        uses: actions/setup-python@v5
+#        with:
+#          python-version: '3.11'
+#
+#      - name: Install Chrome
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y chromium-browser
+#
+#      - name: Install dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install -r requirements.txt
+#
+#      - name: Clean workspace
+#        run: |
+#          find . -type d -name "__pycache__" -exec rm -r {} +
+#          rm -rf .pytest_cache
+#
+#      - name: Run tests
+#        run: |
+#          python -m pytest --alluredir=allure-results
+#        continue-on-error: true
+#
+#      - name: Get Allure history
+#        uses: actions/checkout@v4
+#        if: always()
+#        continue-on-error: true
+#        with:
+#          ref: gh-pages
+#          path: gh-pages
+#
+#      - name: Generate Allure report
+#        uses: simple-elf/allure-report-action@master
+#        if: always()
+#        with:
+#          allure_results: allure-results
+#          allure_history: allure-history
+#
+#      - name: Deploy report to GitHub Pages
+#        uses: peaceiris/actions-gh-pages@v2
+#        if: always()
+#        env:
+#          PERSONAL_TOKEN: ${{ secrets.TOKEN }}
+#          PUBLISH_BRANCH: gh-pages
+#          PUBLISH_DIR: allure-history
 
 #name: UI Tests
 #
