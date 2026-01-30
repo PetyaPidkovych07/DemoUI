@@ -42,17 +42,30 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          
+
+        # 🔹 ОЦЕ ДОДАЄМО
+      - name: Install Xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
 
 #      - name: Clean workspace
 #        run: |
 #            find . -type d -name "__pycache__" -exec rm -r {} +
 #            rm -rf .pytest_cache
 
-
-      - name: Run tests
+# 🔹 І ОЦЕ ЗАМІСТЬ звичайного pytest
+      - name: Run UI tests (headed via Xvfb)
         run: |
-          python -m pytest --alluredir=allure-results
+          xvfb-run -a python -m pytest --alluredir=allure-results
         continue-on-error: true
+
+
+#      - name: Run tests
+#        run: |
+#          python -m pytest --alluredir=allure-results
+#        continue-on-error: true
 
       - name: Get Allure history
         uses: actions/checkout@v4
