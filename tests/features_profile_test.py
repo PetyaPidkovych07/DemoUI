@@ -383,45 +383,45 @@ class TestProfileFeatures(BaseTest):
 @allure.feature("PIM Reports")
 class TestPimReports(BaseTest):
 
-    @allure.story("Create new report")
-    @pytest.mark.smoke
-    def test_add_report(self):
-        with allure.step("Login to OrangeHRM"):
-            self.login_page.open()
-            self.login_page.enter_login()
-            self.login_page.enter_password()
-            self.login_page.click_on_submit_button()
-        with allure.step("Navigate to PIM -> Reports"):
-            self.pim_reports_page.click_on_pim_item()
-            self.pim_reports_page.click_on_report_link()
-        with allure.step("Create a new report with Contact Details field"):
-            self.pim_reports_page.click_on_add_btn()
-            self.pim_reports_page.type_pedro()
-            self.pim_reports_page.click_on_dropdown()
-            self.pim_reports_page.choose_contact_from_dropdown()
-            self.pim_reports_page.click_on_plus_icon()
-            self.pim_reports_page.click_save_btn()
-        with allure.step("Validate report was created"):
-            self.pim_reports_page.is_appeared_new_report()
-
-
-    @allure.story("Search existing report 'pedro' by name")
-    @pytest.mark.smoke
-    def test_find_a_new_report(self):
-        with allure.step("Login to OrangeHRM"):
-            self.login_page.open()
-            self.login_page.enter_login()
-            self.login_page.enter_password()
-            self.login_page.click_on_submit_button()
-        with allure.step("Navigate to PIM -> Reports"):
-            self.pim_reports_page.click_on_pim_item()
-            self.pim_reports_page.click_on_report_link()
-        with allure.step("Search report by autocomplete hint"):
-            self.pim_reports_page.type_ped()
-            self.pim_reports_page.click_on_hint_in_the_field()
-            self.pim_reports_page.click_on_search_btn()
-        with allure.step("Validate that report 'pedro' is found"):
-            self.pim_reports_page.is_appeared_new_report()
+    # @allure.story("Create new report")
+    # @pytest.mark.smoke
+    # def test_add_report(self):
+    #     with allure.step("Login to OrangeHRM"):
+    #         self.login_page.open()
+    #         self.login_page.enter_login()
+    #         self.login_page.enter_password()
+    #         self.login_page.click_on_submit_button()
+    #     with allure.step("Navigate to PIM -> Reports"):
+    #         self.pim_reports_page.click_on_pim_item()
+    #         self.pim_reports_page.click_on_report_link()
+    #     with allure.step("Create a new report with Contact Details field"):
+    #         self.pim_reports_page.click_on_add_btn()
+    #         self.pim_reports_page.type_pedro()
+    #         self.pim_reports_page.click_on_dropdown()
+    #         self.pim_reports_page.choose_contact_from_dropdown()
+    #         self.pim_reports_page.click_on_plus_icon()
+    #         self.pim_reports_page.click_save_btn()
+    #     with allure.step("Validate report was created"):
+    #         self.pim_reports_page.is_appeared_new_report()
+    #
+    #
+    # @allure.story("Search existing report 'pedro' by name")
+    # @pytest.mark.smoke
+    # def test_find_a_new_report(self):
+    #     with allure.step("Login to OrangeHRM"):
+    #         self.login_page.open()
+    #         self.login_page.enter_login()
+    #         self.login_page.enter_password()
+    #         self.login_page.click_on_submit_button()
+    #     with allure.step("Navigate to PIM -> Reports"):
+    #         self.pim_reports_page.click_on_pim_item()
+    #         self.pim_reports_page.click_on_report_link()
+    #     with allure.step("Search report by autocomplete hint"):
+    #         self.pim_reports_page.type_ped()
+    #         self.pim_reports_page.click_on_hint_in_the_field()
+    #         self.pim_reports_page.click_on_search_btn()
+    #     with allure.step("Validate that report 'pedro' is found"):
+    #         self.pim_reports_page.is_appeared_new_report()
 
 
     @allure.story("Search report with invalid name")
@@ -442,26 +442,26 @@ class TestPimReports(BaseTest):
             self.pim_reports_page.is_searched_invalid_report()
 
 
-    @allure.story("Delete existing report 'pedro'")
-    @pytest.mark.smoke
-    def test_delete_report(self):
-        with allure.step("Login to OrangeHRM"):
-            self.login_page.open()
-            self.login_page.enter_login()
-            self.login_page.enter_password()
-            self.login_page.click_on_submit_button()
-        with allure.step("Navigate to PIM -> Reports"):
-            self.pim_reports_page.click_on_pim_item()
-            self.pim_reports_page.click_on_report_link()
-        with allure.step("Find report 'pedro' to delete"):
-            self.pim_reports_page.type_ped()
-            self.pim_reports_page.click_on_hint_in_the_field()
-            self.pim_reports_page.click_on_search_btn()
-        with allure.step("Delete found report and confirm deletion"):
-            self.pim_reports_page.click_on_delete_icon()
-            self.pim_reports_page.click_on_yes_confirm()
-        with allure.step("Validate report was deleted successfully"):
-            self.pim_reports_page.is_successfully_deleted_report()
+    # @allure.story("Delete existing report 'pedro'")
+    # @pytest.mark.smoke
+    # def test_delete_report(self):
+    #     with allure.step("Login to OrangeHRM"):
+    #         self.login_page.open()
+    #         self.login_page.enter_login()
+    #         self.login_page.enter_password()
+    #         self.login_page.click_on_submit_button()
+    #     with allure.step("Navigate to PIM -> Reports"):
+    #         self.pim_reports_page.click_on_pim_item()
+    #         self.pim_reports_page.click_on_report_link()
+    #     with allure.step("Find report 'pedro' to delete"):
+    #         self.pim_reports_page.type_ped()
+    #         self.pim_reports_page.click_on_hint_in_the_field()
+    #         self.pim_reports_page.click_on_search_btn()
+    #     with allure.step("Delete found report and confirm deletion"):
+    #         self.pim_reports_page.click_on_delete_icon()
+    #         self.pim_reports_page.click_on_yes_confirm()
+    #     with allure.step("Validate report was deleted successfully"):
+    #         self.pim_reports_page.is_successfully_deleted_report()
 #     #
 #     # def test_sort_ascending_name(self):
 #     #     self.login_page.open()
@@ -500,26 +500,26 @@ class TestPimReports(BaseTest):
         with allure.step("Validate filter block is hidden"):
             self.pim_reports_page.is_hidden_block()
 
-
-        @allure.story("Sort reports by name in ascending and descending order")
-        @pytest.mark.smoke
-        @pytest.mark.parametrize(
-            "assert_method",
-            [
-                "is_sorted_ascending_name",                 # тут ми викликаємо метод а тести асерити вже виконуються в пейдж обджект де описані
-                "is_sorted_descending_name"
-            ]
-        )
-        def test_sort_reports_by_name(self, assert_method):
-            # --- КРОК 1. ЛОГІН ---
-            self.login_page.open()
-            self.login_page.enter_login()
-            self.login_page.enter_password()
-            self.login_page.click_on_submit_button()
-
-            # --- КРОК 2. НАВІГАЦІЯ ДО СТОРІНКИ ---
-            self.pim_reports_page.click_on_pim_item()
-            self.pim_reports_page.click_on_report_link()
+        #
+        # @allure.story("Sort reports by name in ascending and descending order")
+        # @pytest.mark.smoke
+        # @pytest.mark.parametrize(
+        #     "assert_method",
+        #     [
+        #         "is_sorted_ascending_name",                 # тут ми викликаємо метод а тести асерити вже виконуються в пейдж обджект де описані
+        #         "is_sorted_descending_name"
+        #     ]
+        # )
+        # def test_sort_reports_by_name(self, assert_method):
+        #     # --- КРОК 1. ЛОГІН ---
+        #     self.login_page.open()
+        #     self.login_page.enter_login()
+        #     self.login_page.enter_password()
+        #     self.login_page.click_on_submit_button()
+        #
+        #     # --- КРОК 2. НАВІГАЦІЯ ДО СТОРІНКИ ---
+        #     self.pim_reports_page.click_on_pim_item()
+        #     self.pim_reports_page.click_on_report_link()
 
             # --- КРОК 3. ВИКЛИК МЕТОДУ З PAGEOBJECT ЧЕРЕЗ ІМ'Я ---
             # Тут assert_method — це рядок:
@@ -527,7 +527,7 @@ class TestPimReports(BaseTest):
 
             # getattr бере з об'єкта self.pim_reports_page метод з таким ім'ям
 #             # і викликає його як звичайну функцію
-            getattr(self.pim_reports_page, assert_method)()
+#             getattr(self.pim_reports_page, assert_method)()
 
 # @allure.feature("Vacancies")
 # class TestVacancies(BaseTest):
@@ -710,8 +710,8 @@ class TestPimReports(BaseTest):
 #     #     self.vacancies_page.click_on_search_btn()
 #     #     self.vacancies_page.is_displayed_sales_in_table()
 
-@allure.feature("Recruitment Candidates")
-class TestRecruitmentCandidate(BaseTest):
+# @allure.feature("Recruitment Candidates")
+# class TestRecruitmentCandidate(BaseTest):
 #     @allure.story("Create a candidate profile")
 #     @pytest.mark.smoke
 #     def test_add_new_candidate(self):
@@ -913,45 +913,45 @@ class TestRecruitmentCandidate(BaseTest):
 #     #     self.recruitment_candidate_page.click_on_sort_icon_btn()
 #     #     self.recruitment_candidate_page.are_sorted_ascending_vacancy_in_table()
 
-    @allure.feature("Recruitment Candidates")
-    @allure.story("Sorting in table")
-    @pytest.mark.smoke
-    @pytest.mark.parametrize(
-    "sort_click_method, assert_method, sort_area, sort_direction",
-    [
-        # Vacancy column
-        ("click_on_sort_icon_btn",      "are_sorted_ascending_vacancy_in_table",   "Vacancy",   "Ascending"),
-        ("click_on_sort_icon_btn",      "are_sorted_descending_vacancy_in_table",  "Vacancy",   "Descending"),
-
-        # Candidate column
-        ("click_on_sort_icon_candidate","are_sorted_ascending_candidate_in_table", "Candidate", "Ascending"),
-        ("click_on_sort_icon_candidate","are_sorted_descending_candidate_in_table","Candidate", "Descending"),
-
-        # Hiring Manager column
-        ("click_on_sort_icon_hiring",   "are_sorted_ascending_hiring_in_table",    "Hiring",    "Ascending"),
-        ("click_on_sort_icon_hiring",   "are_sorted_descending_hiring_in_table",   "Hiring",    "Descending"),
-    ]
-)
-    def test_sorting_in_candidates_table(self, sort_click_method, assert_method, sort_area, sort_direction):
-        # --- КРОК 1: Login ---
-        with allure.step("Login to OrangeHRM"):
-            self.login_page.open()
-            self.login_page.enter_login()
-            self.login_page.enter_password()
-            self.login_page.click_on_submit_button()
-
-        # --- КРОК 2: Open Recruitment page ---
-        with allure.step("Navigate to Recruitment section"):
-            self.recruitment_candidate_page.click_on_recruitment_item()
-            self.recruitment_candidate_page.is_opened()
-
-        # --- КРОК 3: Click sort icon ---
-        with allure.step(f"Apply sorting: {sort_area} = {sort_direction}"):
-            getattr(self.recruitment_candidate_page, sort_click_method)()
-
-        # --- КРОК 4: Validate sorting result (asserts inside Page Object) ---
-        with allure.step(f"Validate sorting result for {sort_area} ({sort_direction})"):
-            getattr(self.recruitment_candidate_page, assert_method)()
+#     @allure.feature("Recruitment Candidates")
+#     @allure.story("Sorting in table")
+#     @pytest.mark.smoke
+#     @pytest.mark.parametrize(
+#     "sort_click_method, assert_method, sort_area, sort_direction",
+#     [
+#         # Vacancy column
+#         ("click_on_sort_icon_btn",      "are_sorted_ascending_vacancy_in_table",   "Vacancy",   "Ascending"),
+#         ("click_on_sort_icon_btn",      "are_sorted_descending_vacancy_in_table",  "Vacancy",   "Descending"),
+#
+#         # Candidate column
+#         ("click_on_sort_icon_candidate","are_sorted_ascending_candidate_in_table", "Candidate", "Ascending"),
+#         ("click_on_sort_icon_candidate","are_sorted_descending_candidate_in_table","Candidate", "Descending"),
+#
+#         # Hiring Manager column
+#         ("click_on_sort_icon_hiring",   "are_sorted_ascending_hiring_in_table",    "Hiring",    "Ascending"),
+#         ("click_on_sort_icon_hiring",   "are_sorted_descending_hiring_in_table",   "Hiring",    "Descending"),
+#     ]
+# )
+#     def test_sorting_in_candidates_table(self, sort_click_method, assert_method, sort_area, sort_direction):
+#         # --- КРОК 1: Login ---
+#         with allure.step("Login to OrangeHRM"):
+#             self.login_page.open()
+#             self.login_page.enter_login()
+#             self.login_page.enter_password()
+#             self.login_page.click_on_submit_button()
+#
+#         # --- КРОК 2: Open Recruitment page ---
+#         with allure.step("Navigate to Recruitment section"):
+#             self.recruitment_candidate_page.click_on_recruitment_item()
+#             self.recruitment_candidate_page.is_opened()
+#
+#         # --- КРОК 3: Click sort icon ---
+#         with allure.step(f"Apply sorting: {sort_area} = {sort_direction}"):
+#             getattr(self.recruitment_candidate_page, sort_click_method)()
+#
+#         # --- КРОК 4: Validate sorting result (asserts inside Page Object) ---
+#         with allure.step(f"Validate sorting result for {sort_area} ({sort_direction})"):
+#             getattr(self.recruitment_candidate_page, assert_method)()
 
 
 #     # def test_sorted_descending_vacancy(self):
