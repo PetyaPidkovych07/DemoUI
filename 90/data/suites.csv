@@ -1,4 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","25261","test_hide_block","tests","Fri Jan 30 11:27:45 UTC 2026","broken","Fri Jan 30 11:28:11 UTC 2026","TestPimReports","features_profile_test","",""
-"","25473","test_find_invalid_report","tests","Fri Jan 30 11:27:20 UTC 2026","broken","Fri Jan 30 11:27:45 UTC 2026","TestPimReports","features_profile_test","",""
-"","3931","test_with_valid_crendentional","tests","Fri Jan 30 11:27:15 UTC 2026","passed","Fri Jan 30 11:27:19 UTC 2026","TestProfileFeatures","features_profile_test","",""
