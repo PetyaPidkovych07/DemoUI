@@ -1,3 +1,6 @@
+from selenium.common import ElementClickInterceptedException, ElementNotInteractableException, \
+    StaleElementReferenceException, TimeoutException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -8,7 +11,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage:
 
-    OVERLAY = ("css selector", ".oxd-layout-overlay")
+    OVERLAY_ACTIVE = ("css selector", ".oxd-layout-overlay:not(.oxd-overlay--hide)")
+    SPINNER_ACTIVE = ("css selector", ".oxd-loading-spinner-container")
 
     def __init__(self, driver):
         self.driver = driver
@@ -25,30 +29,53 @@ class BasePage:
 
 
     # 🔒 CI-safe wait: overlay повністю "схований"
+
     def wait_overlay_gone(self):
-        try:
-            self.wait.until(
-                lambda d: "oxd-overlay--hide"
-                in d.find_element(*self.OVERLAY).get_attribute("class")
-            )
-        except Exception:
-            # якщо overlay ще не існує — ок
-            pass
+        # чекаємо, поки активний overlay зникне (або його нема)
+        self.wait.until(EC.invisibility_of_element_located(self.OVERLAY_ACTIVE))
+        # і поки спінер зникне (на OrangeHRM часто є)
+        self.wait.until(EC.invisibility_of_element_located(self.SPINNER_ACTIVE))
 
 
 
 # 🔥 CI-safe click (scroll + overlay-aware + JS click)
-    def safe_click(self, locator):
-        self.wait_overlay_gone()
+    def safe_click(self, locator, retries=3):
+        last = None
 
-        el = self.wait.until(EC.presence_of_element_located(locator))
+        for _ in range(retries):
+            try:
+                self.wait_overlay_gone()
 
-        # важливо для CI / Xvfb
-        self.driver.execute_script(
-            "arguments[0].scrollIntoView({block: 'center'});", el
-        )
+                el = self.wait.until(EC.presence_of_element_located(locator))
+                self.driver.execute_script(
+                    "arguments[0].scrollIntoView({block:'center'});", el
+                )
+                self.wait.until(EC.visibility_of(el))
 
-        self.wait_overlay_gone()
+                self.wait_overlay_gone()
 
-        # JS click — стабільно в CI
-        self.driver.execute_script("arguments[0].click();", el)
+                # 1️⃣ реальний user-like click
+                ActionChains(self.driver) \
+                    .move_to_element(el) \
+                    .pause(0.05) \
+                    .click(el) \
+                    .perform()
+                return
+
+            except (
+                    ElementClickInterceptedException,
+                    ElementNotInteractableException,
+                    StaleElementReferenceException,
+                    TimeoutException
+            ) as e:
+                last = e
+
+                # 2️⃣ fallback — JS click
+                try:
+                    el = self.wait.until(EC.presence_of_element_located(locator))
+                    self.driver.execute_script("arguments[0].click();", el)
+                    return
+                except Exception as e2:
+                    last = e2
+
+        raise last
