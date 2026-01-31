@@ -16,7 +16,7 @@ class AdminNationalities(BasePage):
     COUNTRIES = Nationalities
 
     CHOOSE_ADMIN_FROM_MENU = ("xpath", "//span[text()='Admin']")
-    NATIONALITIES_BTN = ("xpath", "//a[text()='Nationalities']")
+    NATIONALITIES_BTN = ("xpath", "//a[contains(@class,'oxd-topbar-body-nav-tab-item') and normalize-space()='Nationalities']")
     DELETE_BTN = ("xpath", "(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[1]")
     EDIT_BTN = ("xpath", "(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[2]")
     YES_DELETE_ITEM = ("xpath", "//*[text()=' Yes, Delete ']")
@@ -46,17 +46,27 @@ class AdminNationalities(BasePage):
 
     @allure.step("Click menu item: Admin")
     def click_on_admin_item(self):
-        self.wait.until(EC.element_to_be_clickable(self.CHOOSE_ADMIN_FROM_MENU)).click()
-
-    @allure.step("Open submenu: Nationalities")
-    def choose_on_visibility_nationalities_item(self):
-        self.wait.until(EC.visibility_of_element_located(self.NATIONALITIES_BTN))
-        self.wait.until(EC.element_to_be_clickable(self.NATIONALITIES_BTN)).click()
+        self.safe_click(self.CHOOSE_ADMIN_FROM_MENU)
 
     @allure.step("Open submenu: Nationalities")
     def choose_on_nationalities_item(self):
-        self.wait.until(EC.visibility_of_element_located(self.NATIONALITIES_BTN))
-        self.wait.until(EC.element_to_be_clickable(self.NATIONALITIES_BTN)).click()
+        self.safe_click(self.NATIONALITIES_BTN)
+
+    # @allure.step("Click menu item: Admin")
+    # def click_on_admin_item(self):
+    #     self.wait.until(EC.element_to_be_clickable(self.CHOOSE_ADMIN_FROM_MENU)).click()
+    #
+    # @allure.step("Open submenu: Nationalities")
+    # def choose_on_visibility_nationalities_item(self):
+    #     self.wait.until(EC.visibility_of_element_located(self.NATIONALITIES_BTN))
+    #     self.wait.until(EC.element_to_be_clickable(self.NATIONALITIES_BTN)).click()
+    #
+    #
+    #
+    #
+    # @allure.step("Open submenu: Nationalities")
+    # def choose_on_nationalities_item(self):
+    #     self.wait.until(EC.element_to_be_clickable(self.NATIONALITIES_BTN)).click()
 
     @allure.step("Click button: Add")
     def click_on_add_item(self):
