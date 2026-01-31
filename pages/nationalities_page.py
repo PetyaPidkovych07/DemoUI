@@ -49,7 +49,13 @@ class AdminNationalities(BasePage):
         self.wait.until(EC.element_to_be_clickable(self.CHOOSE_ADMIN_FROM_MENU)).click()
 
     @allure.step("Open submenu: Nationalities")
+    def choose_on_visibility_nationalities_item(self):
+        self.wait.until(EC.visibility_of_element_located(self.NATIONALITIES_BTN))
+        self.wait.until(EC.element_to_be_clickable(self.NATIONALITIES_BTN)).click()
+
+    @allure.step("Open submenu: Nationalities")
     def choose_on_nationalities_item(self):
+        self.wait.until(EC.visibility_of_element_located(self.NATIONALITIES_BTN))
         self.wait.until(EC.element_to_be_clickable(self.NATIONALITIES_BTN)).click()
 
     @allure.step("Click button: Add")
